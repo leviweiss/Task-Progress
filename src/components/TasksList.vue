@@ -15,6 +15,19 @@ export default {
     },
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.app {
+    @include flex-column;
+}
 
 </style>
