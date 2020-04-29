@@ -1,9 +1,9 @@
 <template>
-    <div class="groups-list">
-        <ul v-for="item in groups" :key="item.id">
-            <li class="groups-list__item">item.name</li>
-        </ul>
-        <div class="groups-list__add-group">+++++++++++</div>
+    <div id="groups-list" class="groups-list-container">
+        <div v-for="item in groupsInfo" :key="item.id">
+            <div class="groups-list-container__item">{{ item.name }}</div>
+        </div>       
+        <div class="groups-list-container__add-group">+</div>
     </div>
 </template>
 
@@ -11,15 +11,11 @@
 export default {
     name: 'groups-list',
     props: {
-        groupsInput: Array
+        groupsInfo: Array
     },
-    data() {
-        return {
-            groups: this.groupsInput
-        };
-    }, 
 }
 </script>
+
 <style scoped lang="scss">
 @mixin flex-row {
     display: flex;
@@ -31,14 +27,24 @@ export default {
     flex-direction: column;
 }
 
-.groups-list {
+.groups-list-container {
     @include flex-column;
     border: blue solid 2px;
+    padding: 2px;
+
     &__item {
-        border: green solid 2px;
+        border: green solid 4px;
+        text-align: center;
+        padding: 5px;
+        color: white;
+        background: black;
     }
     &__add-group {
-        border: red solid 2px;
+        border: red solid 4px;
+        text-align: center;
+        padding: 5px;
+        color: white;
+        background: black;
     }
 }
 

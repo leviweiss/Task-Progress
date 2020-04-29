@@ -1,9 +1,9 @@
 <template>
-    <div id="app" class="app">
+    <div id="app" class="app-container">
         <main-header></main-header>
-        <div class="body">
-            <tasks-list :tasks="currentTasks"></tasks-list>
-            <groups-list :groups="groups"></groups-list>
+        <div class="app-container__body">
+            <groups-list :groupsInfo="groupsInfo"></groups-list>
+            <tasks-list :task="currentTask"></tasks-list>
         </div>
     </div>
 </template>
@@ -20,7 +20,7 @@ export default {
     },
     data() {
         return {
-            groups: [
+            groupsInfo: [
                 {
                     id: 1,
                     name: 'First',
@@ -71,8 +71,11 @@ export default {
     flex-direction: column;
 }
 
-.app {
+.app-container {
     @include flex-column;
+    &__body {
+        @include flex-row;
+    }
 }
 
 </style>

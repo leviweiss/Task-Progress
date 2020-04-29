@@ -1,8 +1,8 @@
 <template>
-    <div id="tasks-list">
+    <div id="tasks-list" class="tasks-list-container">
         <ul>
-        <li class="tasks-list-item">abc</li>
-        <li class="tasks-list-item">def</li>
+        <li class="tasks-list-container_item">abc</li>
+        <li class="tasks-list-container_item">def</li>
         </ul>
     </div>
 </template>
@@ -15,6 +15,7 @@ export default {
     },
 }
 </script>
+
 <style scoped lang="scss">
 @mixin flex-row {
     display: flex;
@@ -26,7 +27,7 @@ export default {
     flex-direction: column;
 }
 
-.app {
+.tasks-list-container {
     @include flex-column;
 }
 
