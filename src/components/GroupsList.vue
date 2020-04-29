@@ -1,7 +1,10 @@
 <template>
     <div id="groups-list" class="groups-list-container">
+        <div class="groups-list-container__header">Sections</div>
         <div v-for="item in groupsInfo" :key="item.id">
-            <div class="groups-list-container__item">{{ item.name }}</div>
+            <div href="#" class="groups-list-container__item" :class="{'groups-list-container__item__active': item.id === chosenGroupId}">
+                {{ item.name }}
+            </div>            
         </div>       
         <div class="groups-list-container__add-group">+</div>
     </div>
@@ -11,7 +14,8 @@
 export default {
     name: 'groups-list',
     props: {
-        groupsInfo: Array
+        groupsInfo: Array,
+        chosenGroupId: Number,
     },
 }
 </script>
@@ -29,22 +33,46 @@ export default {
 
 .groups-list-container {
     @include flex-column;
-    border: blue solid 2px;
-    padding: 2px;
+
+    &__header {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px;
+        margin: 1px;
+        background: rgb(0, 0, 0);
+        color: white;
+    }
 
     &__item {
-        border: green solid 4px;
+        font-size: 18px;
+        margin: 1px;
         text-align: center;
         padding: 5px;
+        background: rgba(0, 0, 0, 0.781);
         color: white;
-        background: black;
+        cursor: pointer;
+        &:hover {
+            background-color: gray;
+        }
+
+        &__active {
+            background-color: gray;
+        }
     }
+
+
+
     &__add-group {
-        border: red solid 4px;
+        font-size: 18px;
+        margin: 1px;
         text-align: center;
         padding: 5px;
+        background: rgba(0, 0, 0, 0.781);
         color: white;
-        background: black;
+        &:hover {
+            background-color: gray;
+        }
     }
 }
 

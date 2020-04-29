@@ -13,8 +13,8 @@ export default {
 <style scoped lang="scss">
 .header-container {
     text-align: center;
-    align-self: center;
-    color: black;
-    font-size: 20px;
+    font-size: 16px;
+    color: white;
+    background: rgba(0, 0, 0, 0.781);
 }
 </style>

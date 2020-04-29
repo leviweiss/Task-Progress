@@ -2,8 +2,8 @@
     <div id="app" class="app-container">
         <main-header></main-header>
         <div class="app-container__body">
-            <groups-list :groupsInfo="groupsInfo"></groups-list>
-            <tasks-list :task="currentTask"></tasks-list>
+            <groups-list class="app-container__body__groups-list" :groupsInfo="groupsInfo" :chosenGroupId="chosenGroupId"></groups-list>
+            <tasks-list class="app-container__body__tasks-list" :tasks="tasks"></tasks-list>
         </div>
     </div>
 </template>
@@ -54,13 +54,14 @@ export default {
                     ],                    
                 },                
             ],
-            currentTask: 1
+            chosenGroupId: 1,
+            tasks: undefined,
         };
     },    
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @mixin flex-row {
     display: flex;
     flex-direction: row;
@@ -73,8 +74,21 @@ export default {
 
 .app-container {
     @include flex-column;
+
     &__body {
         @include flex-row;
+        padding-top: 10px;
+
+        &__groups-list {
+            min-width: 100px;
+            max-width: 200px;
+            flex: 10%;     
+            overflow-wrap: break-word;
+        }
+
+        &__tasks-list {
+            flex: 90%;
+        }
     }
 }
 
