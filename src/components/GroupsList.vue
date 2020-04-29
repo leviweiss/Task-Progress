@@ -2,7 +2,10 @@
     <div id="groups-list" class="groups-list-container">
         <div class="groups-list-container__header">Sections</div>
         <div v-for="item in groupsInfo" :key="item.id">
-            <div href="#" class="groups-list-container__item" :class="{'groups-list-container__item__active': item.id === chosenGroupId}">
+            <div href="#" 
+                class="groups-list-container__item" 
+                :class="{'groups-list-container__item__active': item.id === chosenGroupId}"
+                @click.prevent="chooseGroup(item.id)">
                 {{ item.name }}
             </div>            
         </div>       
@@ -17,6 +20,11 @@ export default {
         groupsInfo: Array,
         chosenGroupId: Number,
     },
+    methods: {
+        chooseGroup(groupId) {
+            this.$emit('choose:group', groupId)
+        }
+    }
 }
 </script>
 

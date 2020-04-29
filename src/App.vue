@@ -2,7 +2,10 @@
     <div id="app" class="app-container">
         <main-header></main-header>
         <div class="app-container__body">
-            <groups-list class="app-container__body__groups-list" :groupsInfo="groupsInfo" :chosenGroupId="chosenGroupId"></groups-list>
+            <groups-list class="app-container__body__groups-list" 
+                :groupsInfo="groupsInfo" :chosenGroupId="chosenGroupId"
+                @choose:group="chooseGroup">
+            </groups-list>
             <tasks-list class="app-container__body__tasks-list" :tasks="tasks"></tasks-list>
         </div>
     </div>
@@ -57,7 +60,12 @@ export default {
             chosenGroupId: 1,
             tasks: undefined,
         };
-    },    
+    },
+    methods: {
+        chooseGroup(groupId) {
+            this.chosenGroupId = groupId;
+        }
+    }
 }
 </script>
 
