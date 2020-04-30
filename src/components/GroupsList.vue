@@ -43,18 +43,18 @@ export default {
     @include flex-column;
 
     &__header {
-        font-size: 24px;
+        font-size: 30px;
         font-weight: bold;
         text-align: center;
         padding: 5px;
-        margin: 1px;
         background: rgb(0, 0, 0);
         color: white;
+        margin-bottom: 1px;
     }
 
     &__item {
-        font-size: 18px;
-        margin: 1px;
+        font-size: 24px;
+        margin-bottom: 1px;
         text-align: center;
         padding: 5px;
         background: rgba(0, 0, 0, 0.781);
@@ -70,12 +70,12 @@ export default {
     }
 
     &__add-group {
-        font-size: 18px;
-        margin: 1px;
+        font-size: 24px;
         text-align: center;
         padding: 5px;
         background: rgba(0, 0, 0, 0.781);
         color: white;
+        margin-bottom: 1px;
         &:hover {
             background-color: gray;
         }

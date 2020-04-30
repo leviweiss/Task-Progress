@@ -20,7 +20,7 @@ export default {
     name: 'App',
     components: {
         MainHeader, TasksList, GroupsList
-    },
+    }, 
     data() {
         return {
             groupsInfo: [
@@ -31,12 +31,12 @@ export default {
                         {
                             id: 1,
                             name: 'First1',
-                            value: 22
+                            value: 2
                         },
                         {
                             id: 2,
                             name: 'Second1',
-                            value: 33
+                            value: 3
                         },                 
                     ],
                 },
@@ -47,12 +47,12 @@ export default {
                         {
                             id: 1,
                             name: 'First2',
-                            value: 44
+                            value: 4
                         },
                         {
                             id: 2,
                             name: 'Second2',
-                            value: 55
+                            value: 5
                         },                 
                     ],                    
                 },                
