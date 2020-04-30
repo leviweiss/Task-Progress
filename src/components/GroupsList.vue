@@ -4,8 +4,7 @@
         <div v-for="item in groupsInfo" :key="item.id">
             <div href="#" 
                 class="groups-list-container__item" 
-                :class="{'groups-list-container__item__active': item.id === chosenGroupId}"
-                @click.prevent="chooseGroup(item.id)">
+                :class="{'groups-list-container__item__active': item.id === chosenGroupId}" @click.prevent="chooseGroup(item.id)">
                 {{ item.name }}
             </div>            
         </div>       

@@ -7,11 +7,11 @@
             </div>
             <div class="tasks-list-container__tasks__bullets">
                 <div v-for="n in NUMBER_OF_BULLETS" :key="n">
-                    <div class="tasks-list-container__tasks__bullets__square"/>
+                    <div class="tasks-list-container__tasks__bullets__square" :class="{'tasks-list-container__tasks__bullets__square__full': n <= task.value}"/>
                 </div>
             </div>
-            <label class="tasks-list-container__tasks__score">
-                
+            <label class="tasks-list-container__tasks__value">
+                {{ task.value }}
             </label>
         </div>          
     </div>
@@ -103,13 +103,23 @@ export default {
             &__square {
                 height: 20px;
                 width: 30px;
-                background-color: black;
                 margin-left: 10px;
+                border: 4px solid;
+
+                &__full {
+                    background-color: gray;
+                }
             }
         }
 
-        &__score {
-
+        &__value {
+            font-size: 24px;
+            margin-left: 10px;
+            text-align: center;
+            padding: 5px;
+            background: rgba(0, 0, 0, 0.781);
+            color: white;
+            width: 50px;
         }
     }
 }
