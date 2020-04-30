@@ -30,13 +30,13 @@ export default {
                     tasks: [
                         {
                             id: 1,
-                            name: 'First',
-                            value: 8
+                            name: 'First1',
+                            value: 22
                         },
                         {
                             id: 2,
-                            name: 'Second',
-                            value: 5
+                            name: 'Second1',
+                            value: 33
                         },                 
                     ],
                 },
@@ -46,24 +46,28 @@ export default {
                     tasks: [
                         {
                             id: 1,
-                            name: 'First',
-                            value: 8
+                            name: 'First2',
+                            value: 44
                         },
                         {
                             id: 2,
-                            name: 'Second',
-                            value: 5
+                            name: 'Second2',
+                            value: 55
                         },                 
                     ],                    
                 },                
             ],
             chosenGroupId: 1,
-            tasks: undefined,
         };
     },
     methods: {
         chooseGroup(groupId) {
             this.chosenGroupId = groupId;
+        }
+    },
+    computed: {
+        tasks() {
+            return this.groupsInfo.find(g => g.id === this.chosenGroupId).tasks;
         }
     }
 }
@@ -90,12 +94,12 @@ export default {
         &__groups-list {
             min-width: 100px;
             max-width: 200px;
-            flex: 10%;     
+            flex: 12%;
             overflow-wrap: break-word;
         }
 
         &__tasks-list {
-            flex: 90%;
+            flex: 88%;
         }
     }
 }

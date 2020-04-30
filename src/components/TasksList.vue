@@ -1,9 +1,14 @@
 <template>
     <div id="tasks-list" class="tasks-list-container">
-        <ul>
-        <li class="tasks-list-container_item">abc</li>
-        <li class="tasks-list-container_item">def</li>
-        </ul>
+        <div class="tasks-list-container__header">Tasks</div>
+        <div v-for="task in tasks" :key="task.id">
+            <div href="#" 
+                class="tasks-list-container__task" 
+                :class="{'tasks-list-container__task__active': task.id === chosenTaskId}"
+                @click.prevent="chooseTask(task.id)">
+                {{ task.name }}
+            </div>            
+        </div>          
     </div>
 </template>
 
@@ -13,6 +18,16 @@ export default {
     props: {
         tasks: Array
     },
+    data() {
+        return {
+            chosenTaskId: 1,
+        }
+    },
+    methods: {
+        chooseTask(itemId) {
+            this.chosenTaskId = itemId;
+        }
+    }
 }
 </script>
 
@@ -29,6 +44,36 @@ export default {
 
 .tasks-list-container {
     @include flex-column;
+    align-items: center;
+
+    &__header {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px;
+        margin: 1px;
+        background: rgb(0, 0, 0);
+        color: white;
+        min-width: 80px;
+        max-width: 120px;
+    }
+
+    &__task {
+        font-size: 18px;
+        margin: 1px;
+        text-align: center;
+        padding: 5px;
+        background: rgba(0, 0, 0, 0.781);
+        color: white;
+        cursor: pointer;
+        &:hover {
+            background-color: gray;
+        }
+
+        &__active {
+            background-color: gray;
+        }
+    }
 }
 
 </style>

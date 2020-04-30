@@ -69,8 +69,6 @@ export default {
         }
     }
 
-
-
     &__add-group {
         font-size: 18px;
         margin: 1px;
