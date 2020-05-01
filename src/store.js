@@ -5,16 +5,59 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        
+        groupsInfo: [
+            {
+                id: 1,
+                name: 'Frontend',
+                tasks: [
+                    {
+                        id: 1,
+                        name: 'Vue',
+                        value: 7
+                    },
+                    {
+                        id: 2,
+                        name: 'General',
+                        value: 3
+                    },                 
+                ],
+            },
+            {
+                id: 2,
+                name: 'Workout',
+                tasks: [
+                    {
+                        id: 1,
+                        name: 'Abs',
+                        value: 4
+                    },
+                    {
+                        id: 2,
+                        name: 'Running',
+                        value: 5
+                    },
+                    {
+                        id: 3,
+                        name: 'Hands',
+                        value: 7
+                    },                           
+                ],                    
+            },                
+        ],
+        chosenGroupId: 1,
     },
     mutations: {
-
+        setChosenGroupId(state, groupId) {
+            state.chosenGroupId = groupId
+        },
     },
     getters: {
 
     },
     actions: {
-
+        chooseGroup({ commit }, groupId) {
+            commit('setChosenGroupId', groupId)
+        }
     },
-});
+})
 

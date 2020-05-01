@@ -28,7 +28,7 @@ export default {
         tasks: Array
     },
     created () {
-        this.NUMBER_OF_BULLETS = 10;
+        this.NUMBER_OF_BULLETS = 10
     },    
     data() {
         return {
@@ -37,33 +37,33 @@ export default {
     },
     methods: {
         increaseScore(taskId) {
-            var task = this.tasks.find(t => t.id === taskId);
+            var task = this.tasks.find(t => t.id === taskId)
             if (task.value < this.NUMBER_OF_BULLETS) {
-                task.value += 1;
+                task.value += 1
             }
         },
         decreaseScore(taskId) {
-            var task = this.tasks.find(t => t.id === taskId);
+            var task = this.tasks.find(t => t.id === taskId)
             if (task.value > 0) {
-                task.value -= 1;
+                task.value -= 1
             }
         },
         squareNeedToBeFull(taskId, squareNumber, taskValue) {
             if (squareNumber <= taskValue) {
-                return true;
+                return true
             }
-            var task = this.tasks.find(t => t.id === taskId);
+            var task = this.tasks.find(t => t.id === taskId)
             if (task.hoveringStatus === true && squareNumber <= task.hoveringIndex) {
-                return true;
+                return true
             }
-            return false;
+            return false
         },
         mouseover(task, squareNumber) {
-            task.hoveringStatus = true;
-            task.hoveringIndex = squareNumber;
+            task.hoveringStatus = true
+            task.hoveringIndex = squareNumber
         },
         mouseleave(task) {
-            task.hoveringStatus = false;
+            task.hoveringStatus = false
             task.hoveringIndex = undefined
         },
     }

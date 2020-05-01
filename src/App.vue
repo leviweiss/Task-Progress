@@ -15,64 +15,25 @@
 import MainHeader from '@/components/MainHeader.vue';
 import GroupsList from '@/components/GroupsList.vue';
 import TasksList from '@/components/TasksList.vue';
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'App',
     components: {
         MainHeader, TasksList, GroupsList
-    }, 
-    data() {
-        return {
-            groupsInfo: [
-                {
-                    id: 1,
-                    name: 'Frontend',
-                    tasks: [
-                        {
-                            id: 1,
-                            name: 'Vue',
-                            value: 7
-                        },
-                        {
-                            id: 2,
-                            name: 'General',
-                            value: 3
-                        },                 
-                    ],
-                },
-                {
-                    id: 2,
-                    name: 'Workout',
-                    tasks: [
-                        {
-                            id: 1,
-                            name: 'Abs',
-                            value: 4
-                        },
-                        {
-                            id: 2,
-                            name: 'Running',
-                            value: 5
-                        },
-                        {
-                            id: 3,
-                            name: 'Hands',
-                            value: 7
-                        },                           
-                    ],                    
-                },                
-            ],
-            chosenGroupId: 1,
-        };
     },
     methods: {
-        chooseGroup(groupId) {
-            this.chosenGroupId = groupId;
-        }
+        ...mapActions([
+            'chooseGroup',
+        ]),
     },
     computed: {
+        ...mapState({
+            groupsInfo: state => state.groupsInfo,
+            chosenGroupId: state => state.chosenGroupId,
+        }),        
         tasks() {
-            return this.groupsInfo.find(g => g.id === this.chosenGroupId).tasks;
+            return this.groupsInfo.find(g => g.id === this.chosenGroupId).tasks
         }
     }
 }
