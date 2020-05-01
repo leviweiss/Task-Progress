@@ -52,7 +52,9 @@ export default new Vuex.Store({
         },
     },
     getters: {
-
+        tasks: state => {
+            return state.groupsInfo.find(g => g.id === state.chosenGroupId).tasks            
+        },
     },
     actions: {
         chooseGroup({ commit }, groupId) {

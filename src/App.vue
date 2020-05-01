@@ -15,7 +15,7 @@
 import MainHeader from '@/components/MainHeader.vue';
 import GroupsList from '@/components/GroupsList.vue';
 import TasksList from '@/components/TasksList.vue';
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     name: 'App',
@@ -31,10 +31,10 @@ export default {
         ...mapState({
             groupsInfo: state => state.groupsInfo,
             chosenGroupId: state => state.chosenGroupId,
-        }),        
-        tasks() {
-            return this.groupsInfo.find(g => g.id === this.chosenGroupId).tasks
-        }
+        }),
+        ...mapGetters([
+            'tasks',
+        ]),
     }
 }
 </script>
