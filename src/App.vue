@@ -26,34 +26,39 @@ export default {
             groupsInfo: [
                 {
                     id: 1,
-                    name: 'First',
+                    name: 'Frontend',
                     tasks: [
                         {
                             id: 1,
-                            name: 'First1',
-                            value: 2
+                            name: 'Vue',
+                            value: 7
                         },
                         {
                             id: 2,
-                            name: 'Second1',
+                            name: 'General',
                             value: 3
                         },                 
                     ],
                 },
                 {
                     id: 2,
-                    name: 'Second',
+                    name: 'Workout',
                     tasks: [
                         {
                             id: 1,
-                            name: 'First2',
+                            name: 'Abs',
                             value: 4
                         },
                         {
                             id: 2,
-                            name: 'Second2',
+                            name: 'Running',
                             value: 5
-                        },                 
+                        },
+                        {
+                            id: 3,
+                            name: 'Hands',
+                            value: 7
+                        },                           
                     ],                    
                 },                
             ],

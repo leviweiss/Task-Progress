@@ -6,8 +6,12 @@
                 {{ task.name }}
             </div>
             <div class="tasks-list-container__tasks__bullets">
-                <div v-for="n in NUMBER_OF_BULLETS" :key="n">
-                    <div class="tasks-list-container__tasks__bullets__square" :class="{'tasks-list-container__tasks__bullets__square__full': n <= task.value}"/>
+                <div v-for="index in NUMBER_OF_BULLETS" :key="index">
+                    <div class="tasks-list-container__tasks__bullets__square"
+                    :class="{'tasks-list-container__tasks__bullets__square__full': squareNeedToBeFull(task.id, index, task.value)}"
+                    @mouseover="mouseover(task, index)"
+                    @mouseleave="mouseleave(task)">
+                    </div>
                 </div>
             </div>
             <label class="tasks-list-container__tasks__value">
@@ -32,18 +36,35 @@ export default {
         }
     },
     methods: {
-        increaseScore(index) {
-            var task = this.tasks.find(t => t.id === index);
+        increaseScore(taskId) {
+            var task = this.tasks.find(t => t.id === taskId);
             if (task.value < this.NUMBER_OF_BULLETS) {
                 task.value += 1;
             }
         },
-
-        decreaseScore(index) {
-            var task = this.tasks.find(t => t.id === index);
+        decreaseScore(taskId) {
+            var task = this.tasks.find(t => t.id === taskId);
             if (task.value > 0) {
                 task.value -= 1;
             }
+        },
+        squareNeedToBeFull(taskId, squareNumber, taskValue) {
+            if (squareNumber <= taskValue) {
+                return true;
+            }
+            var task = this.tasks.find(t => t.id === taskId);
+            if (task.hoveringStatus === true && squareNumber <= task.hoveringIndex) {
+                return true;
+            }
+            return false;
+        },
+        mouseover(task, squareNumber) {
+            task.hoveringStatus = true;
+            task.hoveringIndex = squareNumber;
+        },
+        mouseleave(task) {
+            task.hoveringStatus = false;
+            task.hoveringIndex = undefined
         },
     }
 }
