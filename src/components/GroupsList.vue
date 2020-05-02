@@ -1,11 +1,11 @@
 <template>
     <div id="groups-list" class="groups-list-container">
         <div class="groups-list-container__header">Sections</div>
-        <div v-for="item in groupsInfo" :key="item.id">
+        <div v-for="group in groupsInfo" :key="group.id">
             <div href="#" 
                 class="groups-list-container__item" 
-                :class="{'groups-list-container__item__active': item.id === chosenGroupId}" @click.prevent="chooseGroup(item.id)">
-                {{ item.name }}
+                :class="{'groups-list-container__item__active': group.id === chosenGroupId}" @click.prevent="chooseGroup(group.id)">
+                {{ group.name }}
             </div>            
         </div>       
         <div class="groups-list-container__add-group">+</div>
@@ -13,17 +13,24 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex'
+
 export default {
     name: 'groups-list',
-    props: {
-        groupsInfo: Array,
-        chosenGroupId: Number,
-    },
+    computed: {
+        ...mapState({
+            groupsInfo: state => state.groupsInfo,
+            chosenGroupId: state => state.chosenGroupId,
+        }),
+        ...mapGetters([
+            
+        ]),
+    },    
     methods: {
-        chooseGroup(groupId) {
-            this.$emit('choose:group', groupId)
-        }
-    }
+        ...mapActions([
+            'chooseGroup'
+        ]),
+    },
 }
 </script>
 

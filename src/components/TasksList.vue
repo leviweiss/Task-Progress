@@ -41,19 +41,15 @@ export default {
             'activateHovering',
             'deactivateHovering',
         ]),
-        squareNeedToBeFull(taskId, squareNumber, taskValue) {
-            if (squareNumber <= taskValue) {
+        squareNeedToBeFull({ taskId, index, taskValue }) {
+            if (index <= taskValue) {
                 return true
             }
             var task = this.tasks.find(t => t.id === taskId)
-            if (task.hoveringStatus === true && squareNumber <= task.hoveringIndex) {
+            if (task.hoveringStatus === true && index <= task.hoveringIndex) {
                 return true
             }
             return false
-        },
-        deactivateHovering(task) {
-            task.hoveringStatus = false
-            task.hoveringIndex = undefined
         },
     }
 }

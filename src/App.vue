@@ -2,10 +2,7 @@
     <div id="app" class="app-container">
         <main-header></main-header>
         <div class="app-container__body">
-            <groups-list class="app-container__body__groups-list" 
-                :groupsInfo="groupsInfo" :chosenGroupId="chosenGroupId"
-                @choose:group="chooseGroup">
-            </groups-list>
+            <groups-list class="app-container__body__groups-list"></groups-list>
             <tasks-list class="app-container__body__tasks-list"></tasks-list>
         </div>
     </div>
@@ -15,24 +12,12 @@
 import MainHeader from '@/components/MainHeader.vue';
 import GroupsList from '@/components/GroupsList.vue';
 import TasksList from '@/components/TasksList.vue';
-import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'App',
     components: {
         MainHeader, TasksList, GroupsList
     },
-    methods: {
-        ...mapActions([
-            'chooseGroup',
-        ]),
-    },
-    computed: {
-        ...mapState({
-            groupsInfo: state => state.groupsInfo,
-            chosenGroupId: state => state.chosenGroupId,
-        })
-    }
 }
 </script>
 
