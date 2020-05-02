@@ -7,8 +7,8 @@
                 :class="{'groups-list-container__item__active': group.id === chosenGroupId}" @click.prevent="chooseGroup(group.id)">
                 {{ group.name }}
             </div>            
-        </div>       
-        <div class="groups-list-container__add-group">+</div>
+        </div>
+        <div class="groups-list-container__add-group fas fa-plus-circle"></div>
     </div>
 </template>
 
@@ -49,11 +49,12 @@ export default {
     @include flex-column;
 
     &__header {
-        font-size: 32px;
+        font-size: 34px;
         font-weight: bold;
         text-align: center;
         padding: 5px;
-        background: #f6f6f6;
+        background: black;
+        color: #fbab7e;
         margin-bottom: 1px;
     }
 
@@ -75,15 +76,15 @@ export default {
     }
 
     &__add-group {
-        font-size: 24px;
-        text-align: center;
         padding: 5px;
-        background: #f6f6f6;
+        // background: #f6f6f6;
         margin-bottom: 1px;
         &:hover {
-            font-weight: bold;
-            border: blue 3px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+            border: blue 30px;
         }
+        width: inherit;
+        height: 30px;
     }
 }
 
