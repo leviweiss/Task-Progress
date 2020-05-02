@@ -68,7 +68,23 @@ export default new Vuex.Store({
                 task.value -= 1
                 Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
             }         
-        },        
+        },
+        ACTIVATE_HOVERING(state, { taskId, index }) {
+            var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+            var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+            var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+            task.hoveringStatus = true
+            task.hoveringIndex = index
+            Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)            
+        },
+        DEACTIVATE_HOVERING(state, taskId) {
+            var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+            var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+            var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+            task.hoveringStatus = false
+            task.hoveringIndex = undefined
+            Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)            
+        }        
     },
     getters: {
         tasks: state => {
@@ -84,6 +100,12 @@ export default new Vuex.Store({
         },
         decreaseScore({ commit }, taskId) {
             commit('DECREASE_SCORE', taskId)
+        },
+        activateHovering({ commit }, { taskId, index }) {
+            commit('ACTIVATE_HOVERING', { taskId, index })
+        },
+        deactivateHovering({ commit }, taskId) {
+            commit('DEACTIVATE_HOVERING', taskId)
         },
     },
 })

@@ -8,9 +8,9 @@
             <div class="tasks-list-container__tasks__bullets">
                 <div v-for="index in NUMBER_OF_BULLETS" :key="index">
                     <div class="tasks-list-container__tasks__bullets__square"
-                    :class="{'tasks-list-container__tasks__bullets__square__full': squareNeedToBeFull(task.id, index, task.value)}"
-                    @mouseover="mouseover(task, index)"
-                    @mouseleave="mouseleave(task)">
+                    :class="{'tasks-list-container__tasks__bullets__square__full': squareNeedToBeFull({ taskId: task.id, index, taskValue: task.value })}"
+                    @mouseover="activateHovering({ taskId: task.id, index })"
+                    @mouseleave="deactivateHovering(task.id)">
                     </div>
                 </div>
             </div>
@@ -34,15 +34,12 @@ export default {
             'tasks',
         ]),
     },
-    data() {
-        return {
-            chosenTaskId: 1,
-        }
-    },
     methods: {
         ...mapActions([
             'increaseScore',
             'decreaseScore',
+            'activateHovering',
+            'deactivateHovering',
         ]),
         squareNeedToBeFull(taskId, squareNumber, taskValue) {
             if (squareNumber <= taskValue) {
@@ -54,11 +51,7 @@ export default {
             }
             return false
         },
-        mouseover(task, squareNumber) {
-            task.hoveringStatus = true
-            task.hoveringIndex = squareNumber
-        },
-        mouseleave(task) {
+        deactivateHovering(task) {
             task.hoveringStatus = false
             task.hoveringIndex = undefined
         },
