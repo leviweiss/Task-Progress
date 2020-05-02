@@ -1,6 +1,6 @@
 <template>
     <div id="main-header" class="header-container">
-        <h1>Task Progress</h1>
+        <h1>Tasks Progress</h1>
     </div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
 .header-container {
     text-align: center;
     font-size: 16px;
-    color: white;
-    background: rgba(0, 0, 0, 0.781);
+    background: linear-gradient(297.24deg,#fbab7e 0%,#f7ce68 100%);
+    // box-shadow: 0 8px rgba(87, 236, 0, 0.07);
+    font-family: "Comic Sans MS";
 }
 </style>

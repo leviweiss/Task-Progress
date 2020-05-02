@@ -1,6 +1,6 @@
 <template>
     <div id="tasks-list" class="tasks-list-container">
-        <div class="tasks-list-container__header">Tasks</div>
+        <!-- <div class="tasks-list-container__header">Tasks</div> -->
         <div class="tasks-list-container__tasks" v-for="task in tasks" :key="task.id">
             <div class="tasks-list-container__tasks__name">
                 {{ task.name }}
@@ -72,18 +72,17 @@ export default {
     align-items: center;
     justify-content: center;    
 
-    &__header {
-        font-size: 30px;
-        font-weight: bold;
-        text-align: center;
-        padding: 5px;
-        background: rgb(0, 0, 0);
-        color: white;
-        min-width: 100px;
-        max-width: 160px;
-        margin-bottom: 10px;
-        align-self: center;
-    }
+    // &__header {
+    //     font-size: 30px;
+    //     font-weight: bold;
+    //     text-align: center;
+    //     padding: 5px;
+    //     background: #f6f6f6;
+    //     min-width: 100px;
+    //     max-width: 160px;
+    //     margin-bottom: 10px;
+    //     align-self: center;
+    // }
 
     &__tasks {
         @include flex-row;
@@ -95,8 +94,7 @@ export default {
             margin-left: 20px;
             text-align: center;
             padding: 5px;
-            background: rgba(0, 0, 0, 0.781);
-            color: white;
+            background: #f6f6f6;
             width: 150px;
         }
 
@@ -113,7 +111,7 @@ export default {
                 border: 4px solid;
 
                 &__full {
-                    background-color: gray;
+                    background: linear-gradient(297.24deg,#fbab7e 0%,#f7ce68 100%);
                 }
             }
         }
@@ -123,8 +121,7 @@ export default {
             margin-left: 10px;
             text-align: center;
             padding: 5px;
-            background: rgba(0, 0, 0, 0.781);
-            color: white;
+            background: #f6f6f6;
             width: 50px;
         }
     }

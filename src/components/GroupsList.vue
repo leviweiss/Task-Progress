@@ -49,12 +49,11 @@ export default {
     @include flex-column;
 
     &__header {
-        font-size: 30px;
+        font-size: 32px;
         font-weight: bold;
         text-align: center;
         padding: 5px;
-        background: rgb(0, 0, 0);
-        color: white;
+        background: #f6f6f6;
         margin-bottom: 1px;
     }
 
@@ -63,15 +62,15 @@ export default {
         margin-bottom: 1px;
         text-align: center;
         padding: 5px;
-        background: rgba(0, 0, 0, 0.781);
-        color: white;
+        background: #f6f6f6;
         cursor: pointer;
         &:hover {
-            background-color: gray;
+            font-weight: bold;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
         }
 
         &__active {
-            background-color: gray;
+            background: linear-gradient(297.24deg,#fbab7e 0%,#f7ce68 100%);
         }
     }
 
@@ -79,11 +78,11 @@ export default {
         font-size: 24px;
         text-align: center;
         padding: 5px;
-        background: rgba(0, 0, 0, 0.781);
-        color: white;
+        background: #f6f6f6;
         margin-bottom: 1px;
         &:hover {
-            background-color: gray;
+            font-weight: bold;
+            border: blue 3px;
         }
     }
 }
