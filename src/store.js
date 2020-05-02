@@ -45,11 +45,30 @@ export default new Vuex.Store({
             },                
         ],
         chosenGroupId: 1,
+        NUMBER_OF_BULLETS: 10,
     },
     mutations: {
-        setChosenGroupId(state, groupId) {
+        SET_CHOSEN_GROUP_ID(state, groupId) {
             state.chosenGroupId = groupId
         },
+        INCREASE_SCORE(state, taskId) {
+            var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+            var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+            var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+            if (task.value < this.NUMBER_OF_BULLETS) {
+                task.value += 1
+                Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
+            }         
+        },
+        DECREASE_SCORE(state, taskId) {
+            var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+            var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+            var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+            if (task.value > 0) {
+                task.value -= 1
+                Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
+            }         
+        },        
     },
     getters: {
         tasks: state => {
@@ -58,8 +77,14 @@ export default new Vuex.Store({
     },
     actions: {
         chooseGroup({ commit }, groupId) {
-            commit('setChosenGroupId', groupId)
-        }
+            commit('SET_CHOSEN_GROUP_ID', groupId)
+        },
+        increaseScore({ commit }, taskId) {
+            commit('INCREASE_SCORE', taskId)
+        },
+        decreaseScore({ commit }, taskId) {
+            commit('DECREASE_SCORE', taskId)
+        },
     },
 })
 

@@ -22,32 +22,28 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex'
+
 export default {
     name: 'tasks-list',
-    props: {
-        tasks: Array
+    computed: {
+        ...mapState({
+            NUMBER_OF_BULLETS: state => state.NUMBER_OF_BULLETS,
+        }),
+        ...mapGetters([
+            'tasks',
+        ]),
     },
-    created () {
-        this.NUMBER_OF_BULLETS = 10
-    },    
     data() {
         return {
             chosenTaskId: 1,
         }
     },
     methods: {
-        increaseScore(taskId) {
-            var task = this.tasks.find(t => t.id === taskId)
-            if (task.value < this.NUMBER_OF_BULLETS) {
-                task.value += 1
-            }
-        },
-        decreaseScore(taskId) {
-            var task = this.tasks.find(t => t.id === taskId)
-            if (task.value > 0) {
-                task.value -= 1
-            }
-        },
+        ...mapActions([
+            'increaseScore',
+            'decreaseScore',
+        ]),
         squareNeedToBeFull(taskId, squareNumber, taskValue) {
             if (squareNumber <= taskValue) {
                 return true

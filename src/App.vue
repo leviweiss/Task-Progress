@@ -6,7 +6,7 @@
                 :groupsInfo="groupsInfo" :chosenGroupId="chosenGroupId"
                 @choose:group="chooseGroup">
             </groups-list>
-            <tasks-list class="app-container__body__tasks-list" :tasks="tasks"></tasks-list>
+            <tasks-list class="app-container__body__tasks-list"></tasks-list>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@
 import MainHeader from '@/components/MainHeader.vue';
 import GroupsList from '@/components/GroupsList.vue';
 import TasksList from '@/components/TasksList.vue';
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'App',
@@ -31,10 +31,7 @@ export default {
         ...mapState({
             groupsInfo: state => state.groupsInfo,
             chosenGroupId: state => state.chosenGroupId,
-        }),
-        ...mapGetters([
-            'tasks',
-        ]),
+        })
     }
 }
 </script>
