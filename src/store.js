@@ -47,11 +47,20 @@ export default new Vuex.Store({
         chosenGroupId: 1,
         NUMBER_OF_BULLETS: 10,
         MINIMUM_VALUE: 1,
+        lastGroupId: 2,
     },
     mutations: {
         SET_CHOSEN_GROUP_ID(state, groupId) {
             state.chosenGroupId = groupId
         },
+        Add_GROUP(state, groupName) {
+            var group = {}
+            group.id = state.lastGroupId + 1
+            state.lastGroupId += 1
+            group.name = groupName
+            group.tasks = []
+            state.groupsInfo.push(group)
+        },        
         INCREASE_SCORE(state, taskId) {
             var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
             var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
@@ -103,6 +112,9 @@ export default new Vuex.Store({
         chooseGroup({ commit }, groupId) {
             commit('SET_CHOSEN_GROUP_ID', groupId)
         },
+        addGroup({ commit }, groupName = 'GroupName') {
+            commit('Add_GROUP', groupName)
+        },        
         increaseScore({ commit }, taskId) {
             commit('INCREASE_SCORE', taskId)
         },
