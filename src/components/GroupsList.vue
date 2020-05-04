@@ -9,17 +9,29 @@
                 {{ group.name }}
             </div>            
         </div>
-        <div href="#" class="groups-list-container__add-group" @click.prevent="addGroup('newGroup')">
+        <div href="#" class="groups-list-container__add-group" @click.prevent="openAddGroupModal()">
             <div class="fas fa-plus-circle"></div>
+            <Modal v-show="true" class="groups-list-container__add-group__modal" @confirm="handleRetryFailedAsync">
+                <template slot="dialog-body">
+                    <div class="retry-all-modal__body">
+                        <div class="retry-all-modal__message-item" v-once>{{ lang.retry.confirm }}</div>
+                        <div class="retry-all-modal__message-item" v-once>{{ lang.retry.limitWarn }}</div>
+                    </div>
+                </template>
+            </Modal>
         </div>
     </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
+import Modal from '@/components/Modal.vue'
 
 export default {
     name: 'groups-list',
+    components: {
+        Modal
+    },    
     computed: {
         ...mapState({
             groupsInfo: state => state.groupsInfo,
@@ -34,6 +46,9 @@ export default {
             'chooseGroup',
             'addGroup',
         ]),
+        openAddGroupModal() {
+
+        }
     },
 }
 </script>
@@ -51,8 +66,8 @@ export default {
 
 .groups-list-container {
     .fa-plus-circle {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         cursor: pointer;
         padding: 2px;
         background: #f6f6f6;

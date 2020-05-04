@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import MainHeader from '@/components/MainHeader.vue';
-import GroupsList from '@/components/GroupsList.vue';
-import TasksList from '@/components/TasksList.vue';
+import MainHeader from '@/components/MainHeader.vue'
+import GroupsList from '@/components/GroupsList.vue'
+import TasksList from '@/components/TasksList.vue'
 
 export default {
     name: 'App',
     components: {
-        MainHeader, TasksList, GroupsList
+        MainHeader, TasksList, GroupsList, Modal
     },
 }
 </script>
