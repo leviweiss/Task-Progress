@@ -8,7 +8,7 @@
                 {{ group.name }}
             </div>            
         </div>
-        <div class="groups-list-container__add-group fas fa-plus-circle"></div>
+        <div href="#" class="groups-list-container__add-group fas fa-plus-circle"></div>
     </div>
 </template>
 
@@ -77,14 +77,13 @@ export default {
 
     &__add-group {
         padding: 5px;
-        // background: #f6f6f6;
         margin-bottom: 1px;
-        &:hover {
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-            border: blue 30px;
-        }
         width: inherit;
         height: 30px;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+        }
     }
 }
 

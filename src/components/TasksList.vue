@@ -11,8 +11,17 @@
                         <div class="tasks-list-container__tasks__task__bullets__square"
                         :class="{'tasks-list-container__tasks__task__bullets__square__full': squareNeedToBeFull({ taskId: task.id, index, taskValue: task.value })}"
                         @mouseover="activateHovering({ taskId: task.id, index })"
-                        @mouseleave="deactivateHovering(task.id)">
+                        @mouseleave="deactivateHovering(task.id)"
+                        @click="bulletClick({ taskId: task.id, index })">
                         </div>
+                    </div>
+                </div>
+                <div class="tasks-list-container__tasks__task__arrows">
+                    <div class="tasks-list-container__tasks__task__arrows__up" @click="increaseScore(task.id)">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="tasks-list-container__tasks__task__arrows__up" @click="decreaseScore(task.id)">
+                        <i class="fas fa-arrow-down"></i>
                     </div>
                 </div>
                 <label class="tasks-list-container__tasks__task__value">
@@ -42,6 +51,7 @@ export default {
             'decreaseScore',
             'activateHovering',
             'deactivateHovering',
+            'bulletClick',
         ]),
         squareNeedToBeFull({ taskId, index, taskValue }) {
             var task = this.tasks.find(t => t.id === taskId)
@@ -74,29 +84,39 @@ export default {
 }
 
 .tasks-list-container {
-    // @include flex-column;
+    .fa-arrow-up {
+        color: green;
+        width: 40px;
+        height: 30px;
+        background: #f6f6f6;
+        margin-right: 10px;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 0 0 8px green;
+        }        
+    }    
 
-    // &__header {
-    //     font-size: 30px;
-    //     font-weight: bold;
-    //     text-align: center;
-    //     padding: 5px;
-    //     background: #f6f6f6;
-    //     min-width: 100px;
-    //     max-width: 160px;
-    //     margin-bottom: 10px;
-    //     align-self: center;
-    // }
+    .fa-arrow-down {
+        color: red;
+        width: 40px;
+        height: 30px;
+        background: #f6f6f6;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 0 0 8px red;
+        }        
+    }
+
     &__tasks {
-
         &__task {
             @include flex-row;
             margin-bottom: 10px;
-            justify-content: space-evenly;
+            justify-content: center;
     
             &__name {
                 font-size: 24px;
-                margin-left: 20px;
+                margin-left: 30px;
+                margin-right: 30px;
                 text-align: center;
                 padding: 5px;
                 background: #f6f6f6;
@@ -106,11 +126,12 @@ export default {
             &__bullets {
                 @include flex-row;
                 align-items: center;
+                margin-right: 20px;
     
                 &__square {
                     height: 20px;
                     width: 33px;
-                    margin-left: 10px;
+                    margin-right: 10px;
                     border: 4px solid;
     
                     &__full {
@@ -118,10 +139,15 @@ export default {
                     }
                 }
             }
-    
+
+            &__arrows {
+                @include flex-row;
+                align-items: center;
+                margin-right: 30px;
+            }
+
             &__value {
                 font-size: 24px;
-                margin-left: 10px;
                 text-align: center;
                 padding: 5px;
                 background: #f6f6f6;

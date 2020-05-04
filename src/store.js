@@ -46,6 +46,7 @@ export default new Vuex.Store({
         ],
         chosenGroupId: 1,
         NUMBER_OF_BULLETS: 10,
+        MINIMUM_VALUE: 1,
     },
     mutations: {
         SET_CHOSEN_GROUP_ID(state, groupId) {
@@ -55,7 +56,7 @@ export default new Vuex.Store({
             var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
             var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
             var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
-            if (task.value < this.NUMBER_OF_BULLETS) {
+            if (task.value < state.NUMBER_OF_BULLETS) {
                 task.value += 1
                 Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
             }         
@@ -64,7 +65,7 @@ export default new Vuex.Store({
             var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
             var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
             var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
-            if (task.value > 0) {
+            if (task.value > state.MINIMUM_VALUE) {
                 task.value -= 1
                 Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
             }         
@@ -84,7 +85,14 @@ export default new Vuex.Store({
             task.hoveringStatus = false
             task.hoveringIndex = undefined
             Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)            
-        }        
+        },
+        BULLET_CLICK(state, { taskId, index }) {
+            var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+            var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+            var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+            task.value = index
+            Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)            
+        },        
     },
     getters: {
         tasks: state => {
@@ -106,6 +114,9 @@ export default new Vuex.Store({
         },
         deactivateHovering({ commit }, taskId) {
             commit('DEACTIVATE_HOVERING', taskId)
+        },
+        bulletClick({ commit }, { taskId, index }) {
+            commit('BULLET_CLICK', { taskId, index })
         },
     },
 })
