@@ -1,8 +1,8 @@
 <template>
-    <transition name="modal">
+    <transition id="modal">
         <div class="modal-mask">
             <div class="modal-wrapper" @click="wrapperClick">
-                <div class="modal-container">
+                <div class="modal-container" @click.stop>
                     <i class="modal-container-close-icon fa fa-times" @click.prevent="$emit('close')"/>
                     <div class="modal-container-header">
                         <slot name="header">
@@ -22,7 +22,6 @@
                 </div>
             </div>
         </div>
-    
     </transition>
 </template>
 
@@ -38,14 +37,14 @@ export default {
 </script>
 
 <style lang="scss">
-.mask {
+.modal-mask {
     position: fixed;
     z-index: 9998;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.664);
     display: table;
     transition: opacity 0.3s ease;
 }

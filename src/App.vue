@@ -1,9 +1,11 @@
 <template>
     <div id="app" class="app-container">
-        <main-header></main-header>
-        <div class="app-container__body">
-            <groups-list class="app-container__body__groups-list"></groups-list>
-            <tasks-list class="app-container__body__tasks-list"></tasks-list>
+        <div class="app-container__elements">
+            <main-header></main-header>
+            <div class="app-container__elements__body">
+                <groups-list class="app-container__elements__body__groups-list" @open-modal="openAddGroupModal = true"></groups-list>
+                <tasks-list class="app-container__elements__body__tasks-list"></tasks-list>          
+            </div>
         </div>
     </div>
 </template>
@@ -16,7 +18,7 @@ import TasksList from '@/components/TasksList.vue'
 export default {
     name: 'App',
     components: {
-        MainHeader, TasksList, GroupsList, Modal
+        MainHeader, TasksList, GroupsList
     },
 }
 </script>
@@ -33,23 +35,28 @@ export default {
 }
 
 .app-container {
-    @include flex-column;
+    &__elements {        
+        @include flex-column;
 
-    &__body {
-        @include flex-row;
-        padding-top: 10px;
+        &__body {
+            @include flex-row;
+            padding-top: 10px;
 
-        &__groups-list {
-            min-width: 100px;
-            max-width: 200px;
-            flex: 12%;
-            overflow-wrap: break-word;
-        }
+            &__groups-list {
+                min-width: 100px;
+                max-width: 200px;
+                flex: 12%;
+                overflow-wrap: break-word;
+            }
 
-        &__tasks-list {
-            flex: 88%;
+            &__tasks-list {
+                flex: 88%;
+            }
         }
     }
-}
 
+    &__add-group-modal {
+        position: absolute;
+    }
+}
 </style>

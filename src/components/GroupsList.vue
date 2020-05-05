@@ -9,16 +9,18 @@
                 {{ group.name }}
             </div>            
         </div>
-        <div href="#" class="groups-list-container__add-group" @click.prevent="openAddGroupModal()">
+        <div href="#" class="groups-list-container__add-group" @click="openAddGroupModal">
             <div class="fas fa-plus-circle"></div>
-            <Modal v-show="true" class="groups-list-container__add-group__modal" @confirm="handleRetryFailedAsync">
-                <template slot="dialog-body">
-                    <div class="retry-all-modal__body">
-                        <div class="retry-all-modal__message-item" v-once>{{ lang.retry.confirm }}</div>
-                        <div class="retry-all-modal__message-item" v-once>{{ lang.retry.limitWarn }}</div>
-                    </div>
-                </template>
-            </Modal>
+            <Modal v-show="openGroupModal" class="add-group-modal" @close="closeAddGroupModal" @confirm="addGroup(groupName)">
+                <div slot="header">
+                    not default header
+                </div>
+                <div slot="body">
+                </div>
+                <div slot="footer">
+                    not default footer
+                </div>
+            </Modal>            
         </div>
     </div>
 </template>
@@ -31,11 +33,12 @@ export default {
     name: 'groups-list',
     components: {
         Modal
-    },    
+    },
     computed: {
         ...mapState({
             groupsInfo: state => state.groupsInfo,
             chosenGroupId: state => state.chosenGroupId,
+            openGroupModal: state => state.openGroupModal,
         }),
         ...mapGetters([
             
@@ -45,10 +48,9 @@ export default {
         ...mapActions([
             'chooseGroup',
             'addGroup',
+            'openAddGroupModal',
+            'closeAddGroupModal',
         ]),
-        openAddGroupModal() {
-
-        }
     },
 }
 </script>

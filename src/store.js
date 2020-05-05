@@ -48,6 +48,7 @@ export default new Vuex.Store({
         NUMBER_OF_BULLETS: 10,
         MINIMUM_VALUE: 1,
         lastGroupId: 2,
+        openGroupModal: false,
     },
     mutations: {
         SET_CHOSEN_GROUP_ID(state, groupId) {
@@ -101,7 +102,13 @@ export default new Vuex.Store({
             var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
             task.value = index
             Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)            
-        },        
+        },
+        OPEN_ADD_GROUP_MODAL(state) {
+            state.openGroupModal = true;      
+        },
+        CLOSE_ADD_GROUP_MODAL(state) {
+            state.openGroupModal = false;      
+        },
     },
     getters: {
         tasks: state => {
@@ -130,6 +137,12 @@ export default new Vuex.Store({
         bulletClick({ commit }, { taskId, index }) {
             commit('BULLET_CLICK', { taskId, index })
         },
+        openAddGroupModal({ commit }) {
+            commit('OPEN_ADD_GROUP_MODAL')
+        }, 
+        closeAddGroupModal({ commit }) {
+            commit('CLOSE_ADD_GROUP_MODAL')
+        },         
     },
 })
 
