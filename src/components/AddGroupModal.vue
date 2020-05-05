@@ -40,13 +40,16 @@ export default {
     methods: {
         wrapperClick() {
             this.$emit('close');
+            this.groupName = ""
         },
         closeElementClick() {
             this.$emit('close');
+            this.groupName = ""
         },
         AddGroup() {
             this.$emit('add', this.groupName);
             this.$emit('close');
+            this.groupName = ""
         }
     }    
 }

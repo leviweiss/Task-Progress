@@ -17,9 +17,24 @@ export default new Vuex.Store({
                     },
                     {
                         id: 2,
-                        name: 'General',
-                        value: 3
+                        name: 'React',
+                        value: 1
                     },                 
+                    {
+                        id: 3,
+                        name: 'VDOM',
+                        value: 8
+                    },                 
+                    {
+                        id: 4,
+                        name: 'Angular',
+                        value: 2
+                    },
+                    {
+                        id: 5,
+                        name: 'Webpack',
+                        value: 5
+                    },                            
                 ],
             },
             {
@@ -38,16 +53,21 @@ export default new Vuex.Store({
                     },
                     {
                         id: 3,
-                        name: 'Hands',
+                        name: 'Tennis',
                         value: 7
-                    },                           
+                    },
+                    {
+                        id: 4,
+                        name: 'Gym',
+                        value: 5
+                    },                                  
                 ],                    
             },                
         ],
         chosenGroupId: 1,
         NUMBER_OF_BULLETS: 10,
         MINIMUM_VALUE: 1,
-        lastGroupId: 2,
+        lastGroupId: 3,
         openGroupModal: false,
     },
     mutations: {
