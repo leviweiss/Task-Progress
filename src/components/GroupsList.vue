@@ -2,14 +2,13 @@
     <div id="groups-list" class="groups-list-container">
         <div class="groups-list-container__header">Groups</div>
         <div v-for="group in groupsInfo" :key="group.id">
-            <div href="#" 
-                class="groups-list-container__item" 
+            <div class="groups-list-container__item" 
                 :class="{'groups-list-container__item__active': group.id === chosenGroupId}"
                 @click.prevent="chooseGroup(group.id)">
                 {{ group.name }}
             </div>            
         </div>
-        <div href="#" class="groups-list-container__add-group" @click="openAddGroupModal">
+        <div class="groups-list-container__add-group" @click="openAddGroupModal">
             <div class="fas fa-plus-circle"></div>
             <Modal v-show="openGroupModal" class="add-group-modal" @close="closeAddGroupModal" @confirm="addGroup(groupName)">
                 <div slot="header">

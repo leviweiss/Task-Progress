@@ -1,9 +1,11 @@
 <template>
     <transition id="modal">
         <div class="modal-mask">
-            <div class="modal-wrapper" @click="wrapperClick">
+            <div class="modal-wrapper" @click.stop="wrapperClick">
                 <div class="modal-container" @click.stop>
-                    <i class="modal-container-close-icon fa fa-times" @click.prevent="$emit('close')"/>
+                    <div @click.prevent="closeElementClick">
+                        <i class="modal-container-close-icon fa fa-times"/>
+                    </div>
                     <div class="modal-container-header">
                         <slot name="header">
                             default header
@@ -32,6 +34,9 @@ export default {
         wrapperClick() {
             this.$emit('close');
         },
+        closeElementClick() {
+            this.$emit('close');
+        }
     }    
 }
 </script>
