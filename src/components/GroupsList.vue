@@ -10,28 +10,19 @@
         </div>
         <div class="groups-list-container__add-group" @click="openAddGroupModal">
             <div class="fas fa-plus-circle"></div>
-            <Modal v-show="openGroupModal" class="add-group-modal" @close="closeAddGroupModal" @confirm="addGroup(groupName)">
-                <div slot="header">
-                    not default header
-                </div>
-                <div slot="body">
-                </div>
-                <div slot="footer">
-                    not default footer
-                </div>
-            </Modal>            
+            <AddGroupModal v-show="openGroupModal" @close="closeAddGroupModal" @add="addGroup"/>
         </div>
     </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
-import Modal from '@/components/Modal.vue'
+import AddGroupModal from '@/components/AddGroupModal.vue'
 
 export default {
     name: 'groups-list',
     components: {
-        Modal
+        AddGroupModal
     },
     computed: {
         ...mapState({

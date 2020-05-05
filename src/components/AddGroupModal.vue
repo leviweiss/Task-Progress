@@ -7,19 +7,21 @@
                         <i class="modal-container-close-icon fa fa-times"/>
                     </div>
                     <div class="modal-container-header">
-                        <slot name="header">
-                            default header
-                        </slot>
+                        Add New Group
                     </div>
                     <div class="modal-container-body">
-                        <slot name="body">
-                            default body
-                        </slot>
+                        <form>
+                            <div class="modal-container-body__group-name">
+                                <label class="modal-container-body__group-name__label" for="group-name">Group name:</label><br>
+                                <input class="modal-container-body__group-name__text" type="text" id="group-name" name="group-name" 
+                                    placeholder="enter group name" minlength="1" maxlength="12" size="12" v-model="groupName"><br>
+                                <label class="modal-container-body__group-name__size" for="group-name">{{ groupName.length }}</label><br>
+                                <label class="modal-container-body__group-name__max-size" for="group-name">Max size: 12</label><br>
+                            </div>
+                        </form> 
                     </div>
                     <div class="modal-container-footer">
-                        <slot name="footer">
-                            default footer
-                        </slot>
+                        <input type="submit" value="Add" @click.prevent="AddGroup">
                     </div>
                 </div>
             </div>
@@ -30,11 +32,20 @@
 <script>
 export default {
     name: 'Modal',
+    data() {
+        return {
+            groupName: "",
+        }
+    },
     methods: {
         wrapperClick() {
             this.$emit('close');
         },
         closeElementClick() {
+            this.$emit('close');
+        },
+        AddGroup() {
+            this.$emit('add', this.groupName);
             this.$emit('close');
         }
     }    
@@ -42,6 +53,16 @@ export default {
 </script>
 
 <style lang="scss">
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -51,7 +72,7 @@ export default {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.664);
     display: table;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.0s ease;
 }
 
 .modal-wrapper {
@@ -60,7 +81,7 @@ export default {
 }
 
 .modal-container {
-    width: 300px;
+    width: 330px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -72,19 +93,47 @@ export default {
 
 .modal-container-close-icon {
     cursor: pointer;
+    float: right;
 }
 
-.modal-container-header h3{
-    margin-top: 0;
-    color: #42b983;
+.modal-container-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 23%;
+    font-size: 24px;    
 }
 
 .modal-container-body {
-    margin: 20px 0;    
+    margin: 20px 0;
+
+    @include flex-row;
+
+    &__group-name {
+        @include flex-row;
+
+        &__label {
+            margin-right: 10px;
+        }
+
+        &__text {
+            margin-right: 4px;
+        }
+
+        &__size {
+            font-size: 14px;
+            align-self: center;
+            margin-right: 10px;
+        }        
+
+        &__max-size {
+            font-size: 12px;
+            align-self: center;
+        }
+    }    
 }
 
 .modal-container-footer {
-    float: right;
+    margin-left: 40%;
 }
 
 /*
