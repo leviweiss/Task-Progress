@@ -46,15 +46,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@mixin flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-@mixin flex-column {
-    display: flex;
-    flex-direction: column;
-}
 
 .groups-list-container {
     .fa-plus-circle {
@@ -65,7 +56,7 @@ export default {
         background: #f6f6f6;
         border-radius: 50%;
         &:hover {
-            box-shadow: 0 0 10px #ff782a;
+            box-shadow: 0 0 10px $basic-orange;
         }        
     }
 
@@ -77,7 +68,7 @@ export default {
         text-align: center;
         padding: 5px;
         background: black;
-        color: #fbab7e;
+        color: $mild-orange;
         margin-bottom: 1px;
     }
 
@@ -94,7 +85,7 @@ export default {
         }
 
         &__active {
-            background: linear-gradient(297.24deg,#fbab7e 0%,#f7ce68 100%);
+            background: $orange-linear-gradient;
         }
     }
 

@@ -24,15 +24,6 @@ export default {
 </script>
 
 <style lang="scss">
-@mixin flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-@mixin flex-column {
-    display: flex;
-    flex-direction: column;
-}
 
 .app-container {
     &__elements {        

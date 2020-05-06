@@ -51,20 +51,11 @@ export default {
             this.$emit('close');
             this.groupName = ""
         }
-    }    
+    }
 }
 </script>
 
 <style lang="scss">
-@mixin flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-@mixin flex-column {
-    display: flex;
-    flex-direction: column;
-}
 
 .modal-mask {
     position: fixed;

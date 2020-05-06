@@ -73,15 +73,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@mixin flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-@mixin flex-column {
-    display: flex;
-    flex-direction: column;
-}
 
 .tasks-list-container {
     .fa-arrow-up {
@@ -135,7 +126,7 @@ export default {
                     border: 4px solid;
     
                     &__full {
-                        background: linear-gradient(297.24deg,#fbab7e 0%,#f7ce68 100%);
+                        background: $orange-linear-gradient;
                     }
                 }
             }

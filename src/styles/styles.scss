@@ -1,0 +1,13 @@
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+$basic-orange: #fbab7e;
+$mild-orange: #f7ce68;
+$orange-linear-gradient: linear-gradient(297.24deg, $basic-orange 0%, $mild-orange 100%);
