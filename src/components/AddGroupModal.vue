@@ -2,31 +2,29 @@
     <transition id="modal">
         <div class="modal-mask">
             <div class="modal-wrapper" @click.stop="wrapperClick">
-                <div class="modal-container">
-                    <div class="modal-container-sections">
-                        <div class="modal-container-sections__header-section" @click.stop>
-                            <div class="modal-container-sections__header-section__header">
-                                Add New Group
-                            </div>
-                            <div class="modal-container-sections__header-section__close-icon" @click.prevent="closeElementClick">
-                                <i class="fa fa-times"/>
-                            </div>
+                <div class="modal-container" @click.stop>
+                    <div class="modal-container__header-section">
+                        <div class="modal-container__header-section__header">
+                            Add New Group
                         </div>
-                        <div class="modal-container-sections__body">
-                            <form>
-                                <div class="modal-container-sections__body__group-name">
-                                    <label class="modal-container-sections__body__group-name__label" for="group-name">Group name:</label><br>
-                                    <input class="modal-container-sections__body__group-name__text" type="text" id="group-name" name="group-name" 
-                                        placeholder="enter group name" minlength="1" maxlength="12" size="12" v-model="groupName"><br>
-                                    <label class="modal-container-sections__body__group-name__size" for="group-name">{{ groupName.length }}</label><br>
-                                    <label class="modal-container-sections__body__group-name__max-size" for="group-name">Max size: 12</label><br>
-                                </div>
-                            </form> 
-                        </div>
-                        <div class="modal-container-footer">
-                            <input type="submit" value="Add" @click.prevent="AddGroup">
+                        <div class="modal-container__header-section__close-icon" @click.prevent="closeElementClick">
+                            <i class="fa fa-times"/>
                         </div>
                     </div>
+                    <div class="modal-container__body">
+                        <form>
+                            <div class="modal-container__body__group-name">
+                                <label class="modal-container__body__group-name__label" for="group-name">Group name:</label><br>
+                                <input class="modal-container__body__group-name__text" type="text" id="group-name" name="group-name" 
+                                    placeholder="enter group name" minlength="1" maxlength="12" size="12" v-model="groupName"><br>
+                                <label class="modal-container__body__group-name__size" for="group-name">{{ groupName.length }}</label><br>
+                                <label class="modal-container__body__group-name__max-size" for="group-name">Max size: 12</label><br>
+                            </div>
+                        </form> 
+                    </div>
+                    <!-- <div class="modal-container__footer"> -->
+                        <input class="modal-container__footer" type="submit" value="Add" @click.prevent="AddGroup">
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -79,25 +77,26 @@ export default {
 }
 
 .modal-container {
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 160px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
-    font-family: Helvetica, Arial, sans-serif;     
-}
+    font-family: Helvetica, Arial, sans-serif;
 
-.modal-container-sections {
+    @include flex-column;
+    justify-content: space-between;
+
     &__header-section {
         @include flex-row;
-        margin-bottom: 10px;
-
+        
         &__header {
             font-weight: bold;
             font-size: 24px;
+            margin: auto;
         }
         
         &__close-icon {
@@ -106,17 +105,19 @@ export default {
     }
 
     &__body {
-        margin: 20px 0;
+        align-self: center;
 
         &__group-name {
             @include flex-row;
 
             &__label {
+                font-size: 20px;
                 margin-right: 10px;
             }
 
             &__text {
                 margin-right: 4px;
+                font-size: 14px;
             }
 
             &__size {
@@ -126,14 +127,15 @@ export default {
             }        
 
             &__max-size {
-                font-size: 12px;
+                font-size: 14px;
                 align-self: center;
             }
         }    
     }
 
     &__footer {
-        margin-left: 40%;
+        align-self: center;
+        font-size: 18px;
     }
 }
 
