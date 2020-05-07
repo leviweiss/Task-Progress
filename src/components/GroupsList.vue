@@ -46,7 +46,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .groups-list-container {
     .fa-plus-circle {
         width: 36px;
@@ -93,5 +92,4 @@ export default {
         align-self: center;
     }
 }
-
 </style>

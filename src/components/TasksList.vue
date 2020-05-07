@@ -73,7 +73,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .tasks-list-container {
     .fa-arrow-up {
         color: green;
@@ -106,7 +105,7 @@ export default {
     
             &__name {
                 font-size: 24px;
-                margin-left: 30px;
+                margin-left: 10px;
                 margin-right: 30px;
                 text-align: center;
                 padding: 5px;
@@ -143,10 +142,10 @@ export default {
                 padding: 5px;
                 background: $light-gray;
                 width: 50px;
+                margin-right: 10px;
             }
         }
     }
 
 }
-
 </style>

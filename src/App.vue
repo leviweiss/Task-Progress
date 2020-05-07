@@ -24,7 +24,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .app-container {
     &__elements {        
         @include flex-column;

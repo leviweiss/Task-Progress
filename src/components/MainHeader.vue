@@ -11,12 +11,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .header-container {
     text-align: center;
     font-size: 16px;
     background: $orange-linear-gradient;
     font-family: "Comic Sans MS";
 }
-
 </style>
