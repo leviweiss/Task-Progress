@@ -2,26 +2,30 @@
     <transition id="modal">
         <div class="modal-mask">
             <div class="modal-wrapper" @click.stop="wrapperClick">
-                <div class="modal-container" @click.stop>
-                    <div @click.prevent="closeElementClick">
-                        <i class="modal-container-close-icon fa fa-times"/>
-                    </div>
-                    <div class="modal-container-header">
-                        Add New Group
-                    </div>
-                    <div class="modal-container-body">
-                        <form>
-                            <div class="modal-container-body__group-name">
-                                <label class="modal-container-body__group-name__label" for="group-name">Group name:</label><br>
-                                <input class="modal-container-body__group-name__text" type="text" id="group-name" name="group-name" 
-                                    placeholder="enter group name" minlength="1" maxlength="12" size="12" v-model="groupName"><br>
-                                <label class="modal-container-body__group-name__size" for="group-name">{{ groupName.length }}</label><br>
-                                <label class="modal-container-body__group-name__max-size" for="group-name">Max size: 12</label><br>
+                <div class="modal-container">
+                    <div class="modal-container-sections">
+                        <div class="modal-container-sections__header-section" @click.stop>
+                            <div class="modal-container-sections__header-section__header">
+                                Add New Group
                             </div>
-                        </form> 
-                    </div>
-                    <div class="modal-container-footer">
-                        <input type="submit" value="Add" @click.prevent="AddGroup">
+                            <div class="modal-container-sections__header-section__close-icon" @click.prevent="closeElementClick">
+                                <i class="fa fa-times"/>
+                            </div>
+                        </div>
+                        <div class="modal-container-sections__body">
+                            <form>
+                                <div class="modal-container-sections__body__group-name">
+                                    <label class="modal-container-sections__body__group-name__label" for="group-name">Group name:</label><br>
+                                    <input class="modal-container-sections__body__group-name__text" type="text" id="group-name" name="group-name" 
+                                        placeholder="enter group name" minlength="1" maxlength="12" size="12" v-model="groupName"><br>
+                                    <label class="modal-container-sections__body__group-name__size" for="group-name">{{ groupName.length }}</label><br>
+                                    <label class="modal-container-sections__body__group-name__max-size" for="group-name">Max size: 12</label><br>
+                                </div>
+                            </form> 
+                        </div>
+                        <div class="modal-container-footer">
+                            <input type="submit" value="Add" @click.prevent="AddGroup">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,7 +79,8 @@ export default {
 }
 
 .modal-container {
-    width: 330px;
+    width: 400px;
+    height: 400px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -85,49 +90,51 @@ export default {
     font-family: Helvetica, Arial, sans-serif;     
 }
 
-.modal-container-close-icon {
-    cursor: pointer;
-    float: right;
-}
-
-.modal-container-header {
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-left: 23%;
-    font-size: 24px;    
-}
-
-.modal-container-body {
-    margin: 20px 0;
-
-    @include flex-row;
-
-    &__group-name {
+.modal-container-sections {
+    &__header-section {
         @include flex-row;
+        margin-bottom: 10px;
 
-        &__label {
-            margin-right: 10px;
+        &__header {
+            font-weight: bold;
+            font-size: 24px;
         }
-
-        &__text {
-            margin-right: 4px;
+        
+        &__close-icon {
+            cursor: pointer;
         }
+    }
 
-        &__size {
-            font-size: 14px;
-            align-self: center;
-            margin-right: 10px;
-        }        
+    &__body {
+        margin: 20px 0;
 
-        &__max-size {
-            font-size: 12px;
-            align-self: center;
-        }
-    }    
-}
+        &__group-name {
+            @include flex-row;
 
-.modal-container-footer {
-    margin-left: 40%;
+            &__label {
+                margin-right: 10px;
+            }
+
+            &__text {
+                margin-right: 4px;
+            }
+
+            &__size {
+                font-size: 14px;
+                align-self: center;
+                margin-right: 10px;
+            }        
+
+            &__max-size {
+                font-size: 12px;
+                align-self: center;
+            }
+        }    
+    }
+
+    &__footer {
+        margin-left: 40%;
+    }
 }
 
 /*

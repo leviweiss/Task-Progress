@@ -46,19 +46,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.groups-list-container {
-    .fa-plus-circle {
-        width: 36px;
-        height: 36px;
-        cursor: pointer;
-        padding: 2px;
-        background: $light-gray;
-        border-radius: 50%;
-        &:hover {
-            box-shadow: 0 0 10px $basic-orange;
-        }        
-    }
 
+
+.groups-list-container {
     @include flex-column;
 
     &__header {
@@ -69,6 +59,7 @@ export default {
         background: black;
         color: $mild-orange;
         margin-bottom: 1px;
+        overflow-wrap: break-word;
     }
 
     &__item {
@@ -78,6 +69,8 @@ export default {
         padding: 5px;
         background: $light-gray;
         cursor: pointer;
+        overflow-wrap: break-word;
+
         &:hover {
             font-weight: bold;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
@@ -91,5 +84,17 @@ export default {
     &__add-group {
         align-self: center;
     }
+}
+
+.fa-plus-circle {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    padding: 2px;
+    background: $light-gray;
+    border-radius: 50%;
+    &:hover {
+        box-shadow: 0 0 10px $basic-orange;
+    }        
 }
 </style>

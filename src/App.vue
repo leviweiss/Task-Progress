@@ -36,7 +36,6 @@ export default {
                 min-width: 100px;
                 max-width: 200px;
                 flex: 12%;
-                overflow-wrap: break-word;
             }
 
             &__tasks-list {
