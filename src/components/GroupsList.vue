@@ -53,7 +53,7 @@ export default {
         height: 36px;
         cursor: pointer;
         padding: 2px;
-        background: #f6f6f6;
+        background: $light-gray;
         border-radius: 50%;
         &:hover {
             box-shadow: 0 0 10px $basic-orange;
@@ -77,7 +77,7 @@ export default {
         margin-bottom: 1px;
         text-align: center;
         padding: 5px;
-        background: #f6f6f6;
+        background: $light-gray;
         cursor: pointer;
         &:hover {
             font-weight: bold;

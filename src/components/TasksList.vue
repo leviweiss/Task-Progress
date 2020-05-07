@@ -79,7 +79,7 @@ export default {
         color: green;
         width: 40px;
         height: 30px;
-        background: #f6f6f6;
+        background: $light-gray;
         margin-right: 10px;
         cursor: pointer;
         &:hover {
@@ -91,7 +91,7 @@ export default {
         color: red;
         width: 40px;
         height: 30px;
-        background: #f6f6f6;
+        background: $light-gray;
         cursor: pointer;
         &:hover {
             box-shadow: 0 0 8px red;
@@ -110,7 +110,7 @@ export default {
                 margin-right: 30px;
                 text-align: center;
                 padding: 5px;
-                background: #f6f6f6;
+                background: $light-gray;
                 width: 150px;
             }
     
@@ -141,7 +141,7 @@ export default {
                 font-size: 24px;
                 text-align: center;
                 padding: 5px;
-                background: #f6f6f6;
+                background: $light-gray;
                 width: 50px;
             }
         }
