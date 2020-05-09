@@ -4,7 +4,9 @@
         <div v-for="group in groupsInfo" :key="group.id">
             <div class="groups-list-container__item" 
                 :class="{'groups-list-container__item__active': group.id === chosenGroupId}"
-                @click.prevent="chooseGroup(group.id)">
+                @click.prevent="chooseGroup(group.id)"
+                @mouseover="showGroupRemoveIcon(group.id)"
+                @mouseleave="removeGroupRemoveIcon(group.id)">
                 {{ group.name }}
             </div>            
         </div>
@@ -40,6 +42,8 @@ export default {
             'addGroup',
             'openAddGroupModal',
             'closeAddGroupModal',
+            'showGroupRemoveIcon',
+            'removeGroupRemoveIcon',
         ]),
     },
 }
