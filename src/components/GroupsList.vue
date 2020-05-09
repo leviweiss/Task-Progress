@@ -2,13 +2,16 @@
     <div id="groups-list" class="groups-list-container">
         <div class="groups-list-container__header">Groups</div>
         <div v-for="group in groupsInfo" :key="group.id">
-            <div class="groups-list-container__item" 
-                :class="{'groups-list-container__item__active': group.id === chosenGroupId}"
-                @click.prevent="chooseGroup(group.id)"
-                @mouseover="showGroupRemoveIcon(group.id)"
-                @mouseleave="removeGroupRemoveIcon(group.id)">
-                {{ group.name }}
-            </div>            
+            <div class="groups-list-container__item"
+            :class="{'groups-list-container__item--active': group.id === chosenGroupId}"
+            @click.prevent="chooseGroup(group.id)">
+                <div class="groups-list-container__item__name">
+                    {{ group.name }}
+                </div>
+                <div v-show="true" class="groups-list-container__item__remove-icon" @click.stop="removeGroup(group.id)">
+                    <i class="fas fa-minus-circle"></i>
+                </div>
+            </div>
         </div>
         <div class="groups-list-container__add-group" @click="openAddGroupModal">
             <div class="fas fa-plus-circle"></div>
@@ -43,7 +46,7 @@ export default {
             'openAddGroupModal',
             'closeAddGroupModal',
             'showGroupRemoveIcon',
-            'removeGroupRemoveIcon',
+            'removeGroup',
         ]),
     },
 }
@@ -62,13 +65,14 @@ export default {
         padding: 5px;
         background: black;
         color: $mild-orange;
-        margin-bottom: 1px;
+        margin-bottom: 5px;
         overflow-wrap: break-word;
     }
 
     &__item {
+        position: relative;
         font-size: 24px;
-        margin-bottom: 1px;
+        margin-bottom: 5px;
         text-align: center;
         padding: 5px;
         background: $light-gray;
@@ -80,8 +84,18 @@ export default {
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
         }
 
-        &__active {
+        &--active {
             background: $orange-linear-gradient;
+        }
+
+        // &__name {
+
+        // }
+
+        &__remove-icon {
+            position: absolute;
+            top: -12px;
+            right: -6px;
         }
     }
 
@@ -101,4 +115,15 @@ export default {
         box-shadow: 0 0 10px $basic-orange;
     }        
 }
+
+.fa-minus-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    color: red;
+    &:hover {
+        box-shadow: 0 0 10px $basic-orange;
+    }    
+}
+
 </style>

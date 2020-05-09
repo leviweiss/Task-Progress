@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex';
+import isNil from 'lodash/isNil';
 
 Vue.use(Vuex);
 
@@ -124,15 +125,30 @@ export default new Vuex.Store({
             Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)            
         },
         OPEN_ADD_GROUP_MODAL(state) {
-            state.openGroupModal = true;      
+            state.openGroupModal = true      
         },
         CLOSE_ADD_GROUP_MODAL(state) {
-            state.openGroupModal = false;      
+            state.openGroupModal = false
+        },
+        REMOVE_GROUP(state, groupId) {
+            const index = state.groupsInfo.findIndex(g => g.id === groupId)
+            state.groupsInfo.splice(index, 1)
+            if (state.chosenGroupId === groupId) {
+                if (state.groupsInfo.length > 0) {
+                    state.chosenGroupId = state.groupsInfo[0].id
+                } else {
+                    state.chosenGroupId = undefined
+                }
+            }
         },
     },
     getters: {
         tasks: state => {
-            return state.groupsInfo.find(g => g.id === state.chosenGroupId).tasks            
+            if (isNil(state.chosenGroupId)) {
+                return []
+            } else {
+                return state.groupsInfo.find(g => g.id === state.chosenGroupId).tasks            
+            }
         },
     },
     actions: {
@@ -162,7 +178,10 @@ export default new Vuex.Store({
         }, 
         closeAddGroupModal({ commit }) {
             commit('CLOSE_ADD_GROUP_MODAL')
-        },         
+        },
+        removeGroup({ commit }, groupId) {
+            commit('REMOVE_GROUP', groupId)
+        },
     },
 })
 
