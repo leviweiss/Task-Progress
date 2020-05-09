@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="modal-container__body">
-                        <form>
+                        <form id="form">
                             <div class="modal-container__body__group-name">
                                 <label class="modal-container__body__group-name__label" for="group-name">Group name:</label><br>
                                 <input class="modal-container__body__group-name__text" type="text" id="group-name" name="group-name" 
@@ -20,11 +20,17 @@
                                 <label class="modal-container__body__group-name__size" for="group-name">{{ groupName.length }}</label><br>
                                 <label class="modal-container__body__group-name__max-size" for="group-name">Max size: 12</label><br>
                             </div>
+                            <div v-show="showErrorMessage" class="modal-container__body__error-message">
+                                {{ errorMessage }}
+                            </div>
                         </form> 
                     </div>
-                    <!-- <div class="modal-container__footer"> -->
-                        <input class="modal-container__footer" type="submit" value="Add" @click.prevent="AddGroup">
-                    <!-- </div> -->
+                    <div class="modal-container__footer">
+                        <button class="modal-container__footer__button" :class="{'modal-container__footer__button--disable': showErrorMessage}" 
+                        @click.prevent="AddGroup" :disabled="showErrorMessage">
+                            Add
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,6 +43,12 @@ export default {
     data() {
         return {
             groupName: "",
+            errorMessage: "group name must not be empty",
+        }
+    },
+    computed: {
+        showErrorMessage() {
+            return this.groupName.length === 0;
         }
     },
     methods: {
@@ -77,7 +89,7 @@ export default {
 }
 
 .modal-container {
-    width: 350px;
+    width: 380px;
     height: 160px;
     margin: 0px auto;
     padding: 20px 30px;
@@ -109,6 +121,7 @@ export default {
 
         &__group-name {
             @include flex-row;
+            margin-bottom: 3px;
 
             &__label {
                 font-size: 20px;
@@ -130,12 +143,27 @@ export default {
                 font-size: 14px;
                 align-self: center;
             }
-        }    
+        }
+
+        &__error-message {
+            font-size: 14px;
+            color: red;
+        }
     }
 
     &__footer {
         align-self: center;
-        font-size: 18px;
+
+        &__button {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: $light-gray;
+
+            &:disabled {
+                font-weight: normal;
+                background-color: $light-gray;
+            }
+        }
     }
 }
 
