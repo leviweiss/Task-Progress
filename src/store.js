@@ -70,6 +70,7 @@ export default new Vuex.Store({
         MINIMUM_VALUE: 1,
         lastGroupId: 3,
         openGroupModal: false,
+        addingNewTaskMode: false,
     },
     mutations: {
         SET_CHOSEN_GROUP_ID(state, groupId) {
@@ -141,6 +142,9 @@ export default new Vuex.Store({
                 }
             }
         },
+        SET_ADDING_NEW_TASK_MODE(state) {
+            state.addingNewTaskMode = true;
+        }
     },
     getters: {
         tasks: state => {
@@ -182,6 +186,9 @@ export default new Vuex.Store({
         removeGroup({ commit }, groupId) {
             commit('REMOVE_GROUP', groupId)
         },
+        setAddingNewTaskMode({ commit }) {
+            commit('SET_ADDING_NEW_TASK_MODE')
+        },   
     },
 })
 

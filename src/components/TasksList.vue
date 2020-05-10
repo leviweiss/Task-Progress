@@ -1,6 +1,5 @@
 <template>
     <div id="tasks-list" class="tasks-list-container">
-        <!-- <div class="tasks-list-container__header">Tasks</div> -->
         <div class="tasks-list-container__tasks">
             <div class="tasks-list-container__tasks__task" v-for="task in tasks" :key="task.id">
                 <div class="tasks-list-container__tasks__task__name">
@@ -29,6 +28,15 @@
                 </label>
             </div>
         </div>
+        <div class="tasks-list-container__add-task">
+            <div v-if="addingNewTaskMode === false" class="tasks-list-container__add-task__icon" @click="setAddingNewTaskMode">
+                <div class="fas fa-plus-circle"></div>
+            </div>
+            <form v-else>
+                <input class="tasks-list-container__add-task__input" v-model="newTaskName" required type="text" placeholder="enter task name" maxlength="16">
+            </form>
+        </div>
+
     </div>
 </template>
 
@@ -37,9 +45,15 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     name: 'tasks-list',
+    data() {
+        return {
+            newTaskName: "",
+        }
+    },    
     computed: {
         ...mapState({
             NUMBER_OF_BULLETS: state => state.NUMBER_OF_BULLETS,
+            addingNewTaskMode: state => state.addingNewTaskMode,
         }),
         ...mapGetters([
             'tasks',
@@ -52,6 +66,7 @@ export default {
             'activateHovering',
             'deactivateHovering',
             'bulletClick',
+            'setAddingNewTaskMode',
         ]),
         squareNeedToBeFull({ taskId, index, taskValue }) {
             var task = this.tasks.find(t => t.id === taskId)
@@ -74,28 +89,7 @@ export default {
 
 <style scoped lang="scss">
 .tasks-list-container {
-    .fa-arrow-up {
-        color: green;
-        width: 40px;
-        height: 30px;
-        background: $light-gray;
-        margin-right: 10px;
-        cursor: pointer;
-        &:hover {
-            box-shadow: 0 0 8px green;
-        }        
-    }    
-
-    .fa-arrow-down {
-        color: red;
-        width: 40px;
-        height: 30px;
-        background: $light-gray;
-        cursor: pointer;
-        &:hover {
-            box-shadow: 0 0 8px red;
-        }        
-    }
+    @include flex-column;
 
     &__tasks {
         &__task {
@@ -147,5 +141,48 @@ export default {
         }
     }
 
+    &__add-task {
+        align-self: center;
+
+        &__input {
+            font-size: 24px;
+            border: 2px solid;
+        }
+    }    
+}
+
+.fa-arrow-up {
+    color: green;
+    width: 40px;
+    height: 30px;
+    background: $light-gray;
+    margin-right: 10px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 0 8px green;
+    }        
+}    
+
+.fa-arrow-down {
+    color: red;
+    width: 40px;
+    height: 30px;
+    background: $light-gray;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 0 8px red;
+    }        
+}
+
+.fa-plus-circle {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    padding: 2px;
+    background: $light-gray;
+    border-radius: 50%;
+    &:hover {
+        box-shadow: 0 0 10px $basic-orange;
+    }        
 }
 </style>
