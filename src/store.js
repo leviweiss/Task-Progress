@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Vuex from 'vuex';
-import isNil from 'lodash/isNil';
+import Vuex from 'vuex'
+import isNil from 'lodash/isNil'
 
 Vue.use(Vuex);
 

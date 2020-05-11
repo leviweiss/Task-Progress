@@ -29,19 +29,22 @@
             </div>
         </div>
         <div class="tasks-list-container__add-task">
-            <div v-if="addingNewTaskMode === false" class="tasks-list-container__add-task__icon" @click="setAddingNewTaskMode">
+            <div v-show="!addingNewTaskMode" class="tasks-list-container__add-task__icon" @click="setAddingNewTaskMode">
                 <div class="fas fa-plus-circle"></div>
             </div>
-            <form v-else class="tasks-list-container__add-task__input" @keyup.up="addNewTask({ name: newTaskName, value: newTaskSelectedValue})">
-                <input class="tasks-list-container__add-task__input__text" v-model="newTaskName" required type="text" placeholder="enter task name" maxlength="10">
-                <select v-model="newTaskSelectedValue" class="tasks-list-container__add-task__input__select-value" required>
+            <div v-show="addingNewTaskMode" class="tasks-list-container__add-task__input">
+                <input type="text" class="tasks-list-container__add-task__input__text" v-model="newTaskName" placeholder="enter task name" maxlength="15"
+                @keyup.enter="addNewTask({ name: newTaskName, value: newTaskSelectedValue})">
+                <select v-model="newTaskSelectedValue" class="tasks-list-container__add-task__input__select-value">
                     <option v-for="n in NUMBER_OF_BULLETS" :key="n">
                         {{ n }}
                     </option>
-                </select>                
-            </form>
+                </select>
+                <div class="tasks-list-container__add-task__input__check" @click="addNewTask({ name: newTaskName, value: newTaskSelectedValue})">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
         </div>
-
     </div>
 </template>
 
@@ -90,9 +93,11 @@ export default {
             return false
         },
         addNewTask({ name, value }) {
-            this.newTaskName = ""
-            this.newTaskSelectedValue = this.$store.state.DEFAULT_TASK_VALUE
-            this.addNewTaskAndChangeModeBack({ name, value })
+            if (name && value) {
+                this.newTaskName = ""
+                this.newTaskSelectedValue = this.$store.state.DEFAULT_TASK_VALUE
+                this.addNewTaskAndChangeModeBack({ name, value })
+            }
         },
     }
 }
@@ -115,7 +120,7 @@ export default {
                 text-align: center;
                 padding: 5px;
                 background: $light-gray;
-                width: 150px;
+                width: 200px;
             }
     
             &__bullets {
@@ -154,18 +159,22 @@ export default {
 
     &__add-task {
         align-self: center;
+        margin-bottom: 20px;
 
         &__input {
             &__text {
                 font-size: 24px;
-                border: 2px solid;
                 margin-right: 20px;
             }
 
             &__select-value {
                 font-size: 24px;
-                border: 2px solid;
-                align-self: center;
+                margin-right: 20px;
+            }
+
+            &__check {
+                display: inline-block;
+                vertical-align: bottom;
             }
         }
     }    
@@ -205,4 +214,16 @@ export default {
         box-shadow: 0 0 10px $basic-orange;
     }        
 }
+
+.fa-check {
+    color: $strong-orange;
+    width: 40px;
+    height: 30px;
+    background: $light-gray;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 0 8px $strong-orange;
+    }        
+}
+
 </style>
