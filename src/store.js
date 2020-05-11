@@ -144,6 +144,20 @@ export default new Vuex.Store({
         },
         SET_ADDING_NEW_TASK_MODE(state) {
             state.addingNewTaskMode = true;
+        },
+        ADD_NEW_TASK(state, { name, value }) {
+            var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+            var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+            
+            var id = 1;
+            if (!isNil(chosenGroupInfo.tasks)) {
+                id = chosenGroupInfo.tasks[chosenGroupInfo.tasks.length - 1].id + 1
+            }
+            var newTask = { id, name, value }
+            chosenGroupInfo.tasks.push(newTask)
+        },
+        DONE_ADDING_NEW_TASK(state) {
+            state.addingNewTaskMode = false;
         }
     },
     getters: {
@@ -189,6 +203,16 @@ export default new Vuex.Store({
         setAddingNewTaskMode({ commit }) {
             commit('SET_ADDING_NEW_TASK_MODE')
         },   
+        addNewTask({ commit }, { name, value }) {
+            commit('ADD_NEW_TASK', { name, value })
+        },
+        doneAddingNewTask({ commit }) {
+            commit('DONE_ADDING_NEW_TASK')
+        },
+        addNewTaskAndChangeModeBack({ dispatch }, { name, value }) {
+            dispatch('addNewTask', { name, value })
+            dispatch('doneAddingNewTask')
+        },       
     },
 })
 

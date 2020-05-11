@@ -32,8 +32,13 @@
             <div v-if="addingNewTaskMode === false" class="tasks-list-container__add-task__icon" @click="setAddingNewTaskMode">
                 <div class="fas fa-plus-circle"></div>
             </div>
-            <form v-else>
-                <input class="tasks-list-container__add-task__input" v-model="newTaskName" required type="text" placeholder="enter task name" maxlength="16">
+            <form v-else class="tasks-list-container__add-task__input" @keyup.enter.prevent="addNewTaskAndChangeModeBack({ name: newTaskName, value: selectedValue})">
+                <input class="tasks-list-container__add-task__input__text" v-model="newTaskName" required type="text" placeholder="enter task name" maxlength="16">
+                <select v-model="selectedValue" class="tasks-list-container__add-task__input__select-value" required>
+                    <option v-for="n in NUMBER_OF_BULLETS" :key="n">
+                        {{ n }}
+                    </option>
+                </select>                
             </form>
         </div>
 
@@ -48,6 +53,7 @@ export default {
     data() {
         return {
             newTaskName: "",
+            selectedValue: 5
         }
     },    
     computed: {
@@ -67,6 +73,7 @@ export default {
             'deactivateHovering',
             'bulletClick',
             'setAddingNewTaskMode',
+            'addNewTaskAndChangeModeBack',
         ]),
         squareNeedToBeFull({ taskId, index, taskValue }) {
             var task = this.tasks.find(t => t.id === taskId)
@@ -80,7 +87,6 @@ export default {
                     return true
                 }
             }
-
             return false
         },
     }
@@ -145,8 +151,17 @@ export default {
         align-self: center;
 
         &__input {
-            font-size: 24px;
-            border: 2px solid;
+            &__text {
+                font-size: 24px;
+                border: 2px solid;
+                margin-right: 20px;
+            }
+
+            &__select-value {
+                font-size: 24px;
+                border: 2px solid;
+                align-self: center;
+            }
         }
     }    
 }
