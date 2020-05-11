@@ -71,6 +71,7 @@ export default new Vuex.Store({
         lastGroupId: 3,
         openGroupModal: false,
         addingNewTaskMode: false,
+        DEFAULT_TASK_VALUE: 5,
     },
     mutations: {
         SET_CHOSEN_GROUP_ID(state, groupId) {

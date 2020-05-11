@@ -32,9 +32,9 @@
             <div v-if="addingNewTaskMode === false" class="tasks-list-container__add-task__icon" @click="setAddingNewTaskMode">
                 <div class="fas fa-plus-circle"></div>
             </div>
-            <form v-else class="tasks-list-container__add-task__input" @keyup.enter.prevent="addNewTaskAndChangeModeBack({ name: newTaskName, value: selectedValue})">
-                <input class="tasks-list-container__add-task__input__text" v-model="newTaskName" required type="text" placeholder="enter task name" maxlength="16">
-                <select v-model="selectedValue" class="tasks-list-container__add-task__input__select-value" required>
+            <form v-else class="tasks-list-container__add-task__input" @keyup.up="addNewTask({ name: newTaskName, value: newTaskSelectedValue})">
+                <input class="tasks-list-container__add-task__input__text" v-model="newTaskName" required type="text" placeholder="enter task name" maxlength="10">
+                <select v-model="newTaskSelectedValue" class="tasks-list-container__add-task__input__select-value" required>
                     <option v-for="n in NUMBER_OF_BULLETS" :key="n">
                         {{ n }}
                     </option>
@@ -53,9 +53,9 @@ export default {
     data() {
         return {
             newTaskName: "",
-            selectedValue: 5
+            newTaskSelectedValue: this.$store.state.DEFAULT_TASK_VALUE,
         }
-    },    
+    },
     computed: {
         ...mapState({
             NUMBER_OF_BULLETS: state => state.NUMBER_OF_BULLETS,
@@ -88,6 +88,11 @@ export default {
                 }
             }
             return false
+        },
+        addNewTask({ name, value }) {
+            this.newTaskName = ""
+            this.newTaskSelectedValue = this.$store.state.DEFAULT_TASK_VALUE
+            this.addNewTaskAndChangeModeBack({ name, value })
         },
     }
 }
