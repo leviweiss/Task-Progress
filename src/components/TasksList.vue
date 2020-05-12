@@ -26,6 +26,9 @@
                 <label class="tasks-list-container__tasks__task__value">
                     {{ task.value }}
                 </label>
+                <div class="tasks-list-container__tasks__task__trash" @click="removeTask(task.id)">
+                    <i class="fa fa-trash-alt"></i>
+                </div>
             </div>
         </div>
         <div class="tasks-list-container__add-task" @keyup.esc="doneAddingNewTask">
@@ -62,7 +65,7 @@ export default {
             }
         });
     },
-    created (){
+    created() {
         bus.$on('groupChange', () => {
             this.changeNewTaskNameAndValueToDefault()
             this.doneAddingNewTask()
@@ -97,6 +100,7 @@ export default {
             'setAddingNewTaskMode',
             'addNewTaskAndChangeModeBack',
             'doneAddingNewTask',
+            'removeTask',
         ]),
         squareNeedToBeFull({ taskId, index, taskValue }) {
             var task = this.tasks.find(t => t.id === taskId)
@@ -175,7 +179,17 @@ export default {
                 padding: 5px;
                 background: $light-gray;
                 width: 50px;
-                margin-right: 10px;
+                margin-right: 60px;
+            }
+
+            &__trash {
+                text-align: center;
+                cursor: pointer;
+                height: 36px;
+                opacity: 0.3;
+                &:hover {
+                    opacity: 1;
+                }                
             }
         }
     }
@@ -205,7 +219,7 @@ export default {
 
 .fa-arrow-up {
     color: green;
-    width: 40px;
+    width: 36px;
     height: 30px;
     background: $light-gray;
     margin-right: 10px;
@@ -217,7 +231,7 @@ export default {
 
 .fa-arrow-down {
     color: red;
-    width: 40px;
+    width: 36px;
     height: 30px;
     background: $light-gray;
     cursor: pointer;
@@ -249,4 +263,10 @@ export default {
     }        
 }
 
+.fa-trash-alt {
+    width: 36px;
+    height: 30px;
+    vertical-align: -18px;
+    color: rgb(255, 0, 0);
+}
 </style>

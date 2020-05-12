@@ -159,6 +159,12 @@ export default new Vuex.Store({
         },
         DONE_ADDING_NEW_TASK(state) {
             state.addingNewTaskMode = false;
+        },
+        REMOVE_TASK(state, taskId) {
+            var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+            var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]         
+            const index = chosenGroupInfo.tasks.findIndex(t => t.id === taskId)
+            chosenGroupInfo.tasks.splice(index, 1)
         }
     },
     getters: {
@@ -213,7 +219,10 @@ export default new Vuex.Store({
         addNewTaskAndChangeModeBack({ dispatch }, { name, value }) {
             dispatch('addNewTask', { name, value })
             dispatch('doneAddingNewTask')
-        },       
+        },
+        removeTask({ commit }, taskId) {
+            commit('REMOVE_TASK', taskId)
+        },
     },
 })
 

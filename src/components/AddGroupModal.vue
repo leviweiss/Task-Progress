@@ -40,6 +40,14 @@
 <script>
 export default {
     name: 'Modal',
+    mounted() {
+        window.addEventListener("keydown", e => {
+            if (e.key == 'Escape') {
+                this.$emit('close');
+                this.groupName = ""
+            }
+        });
+    },    
     data() {
         return {
             groupName: "",
