@@ -151,7 +151,7 @@ export default new Vuex.Store({
             var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
             
             var id = 1;
-            if (!isNil(chosenGroupInfo.tasks)) {
+            if (!isNil(chosenGroupInfo.tasks) && chosenGroupInfo.tasks.length) {
                 id = chosenGroupInfo.tasks[chosenGroupInfo.tasks.length - 1].id + 1
             }
             var newTask = { id, name, value }
