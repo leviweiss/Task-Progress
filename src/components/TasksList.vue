@@ -28,7 +28,7 @@
                 </label>
             </div>
         </div>
-        <div class="tasks-list-container__add-task">
+        <div class="tasks-list-container__add-task" @keyup.esc="doneAddingNewTask">
             <div v-show="!addingNewTaskMode" class="tasks-list-container__add-task__icon" @click="setAddingNewTaskMode">
                 <div class="fas fa-plus-circle"></div>
             </div>
@@ -50,9 +50,28 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
+import { bus } from '../main'
 
 export default {
     name: 'tasks-list',
+    mounted() {
+        window.addEventListener("keydown", e => {
+            if (e.key == 'Escape') {
+                this.changeNewTaskNameAndValueToDefault()
+                this.doneAddingNewTask()
+            }
+        });
+    },
+    created (){
+        bus.$on('groupChange', () => {
+            this.changeNewTaskNameAndValueToDefault()
+            this.doneAddingNewTask()
+        }),
+        bus.$on('groupRemove', () => {
+            this.changeNewTaskNameAndValueToDefault()
+            this.doneAddingNewTask()            
+        })
+    },    
     data() {
         return {
             newTaskName: "",
@@ -77,6 +96,7 @@ export default {
             'bulletClick',
             'setAddingNewTaskMode',
             'addNewTaskAndChangeModeBack',
+            'doneAddingNewTask',
         ]),
         squareNeedToBeFull({ taskId, index, taskValue }) {
             var task = this.tasks.find(t => t.id === taskId)
@@ -94,11 +114,14 @@ export default {
         },
         addNewTask({ name, value }) {
             if (name && value) {
-                this.newTaskName = ""
-                this.newTaskSelectedValue = this.$store.state.DEFAULT_TASK_VALUE
+                this.changeNewTaskNameAndValueToDefault()
                 this.addNewTaskAndChangeModeBack({ name, value })
             }
         },
+        changeNewTaskNameAndValueToDefault() {
+            this.newTaskName = ""
+            this.newTaskSelectedValue = this.$store.state.DEFAULT_TASK_VALUE
+        }
     }
 }
 </script>

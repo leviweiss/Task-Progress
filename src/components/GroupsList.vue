@@ -4,11 +4,11 @@
         <div v-for="group in groupsInfo" :key="group.id">
             <div class="groups-list-container__item"
             :class="{'groups-list-container__item--active': group.id === chosenGroupId}"
-            @click.prevent="chooseGroup(group.id)">
+            @click.prevent="chooseGroup(group.id); emitGroupChange()">
                 <div class="groups-list-container__item__name">
                     {{ group.name }}
                 </div>
-                <div v-show="true" class="groups-list-container__item__remove-icon" @click.stop="removeGroup(group.id)">
+                <div v-show="true" class="groups-list-container__item__remove-icon" @click.stop="removeGroup(group.id); emitGroupRemove()">
                     <i class="fas fa-minus-circle"></i>
                 </div>
             </div>
@@ -22,7 +22,8 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
-import AddGroupModal from '@/components/AddGroupModal.vue'
+import AddGroupModal from '@/components/AddGroupModal'
+import { bus } from '../main'
 
 export default {
     name: 'groups-list',
@@ -48,6 +49,12 @@ export default {
             'showGroupRemoveIcon',
             'removeGroup',
         ]),
+        emitGroupChange() {
+            bus.$emit('groupChange');
+        },
+        emitGroupRemove() {
+            bus.$emit('groupRemove');
+        } 
     },
 }
 </script>

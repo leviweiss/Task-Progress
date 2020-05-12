@@ -89,8 +89,8 @@ export default {
 }
 
 .modal-container {
-    width: 380px;
-    height: 160px;
+    width: 480px;
+    height: 180px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: $light-gray;
@@ -107,7 +107,7 @@ export default {
         
         &__header {
             font-weight: bold;
-            font-size: 24px;
+            font-size: 30px;
             margin: auto;
         }
         
@@ -124,29 +124,29 @@ export default {
             margin-bottom: 3px;
 
             &__label {
-                font-size: 20px;
+                font-size: 26px;
                 margin-right: 10px;
             }
 
             &__text {
                 margin-right: 4px;
-                font-size: 14px;
+                font-size: 18px;
             }
 
             &__size {
-                font-size: 14px;
+                font-size: 18px;
                 align-self: center;
                 margin-right: 10px;
             }        
 
             &__max-size {
-                font-size: 14px;
+                font-size: 18px;
                 align-self: center;
             }
         }
 
         &__error-message {
-            font-size: 14px;
+            font-size: 18px;
             color: red;
         }
     }
@@ -155,7 +155,7 @@ export default {
         align-self: center;
 
         &__button {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: bold;
             background-color: $light-gray;
 
