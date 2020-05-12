@@ -5,12 +5,11 @@
                 <div class="tasks-list-container__tasks__task__name">
                     {{ task.name }}
                 </div>
-                <div class="tasks-list-container__tasks__task__bullets">
+                <div class="tasks-list-container__tasks__task__bullets" @mouseleave="deactivateHovering(task.id)">
                     <div v-for="index in NUMBER_OF_BULLETS" :key="index">
                         <div class="tasks-list-container__tasks__task__bullets__square"
                         :class="{'tasks-list-container__tasks__task__bullets__square__full': squareNeedToBeFull({ taskId: task.id, index, taskValue: task.value })}"
                         @mouseover="activateHovering({ taskId: task.id, index })"
-                        @mouseleave="deactivateHovering(task.id)"
                         @click="bulletClick({ taskId: task.id, index })">
                         </div>
                     </div>
