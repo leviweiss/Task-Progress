@@ -55,7 +55,7 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 import { bus } from '../main'
 
 export default {
-  name: 'tasks-list',
+  name: 'app-tasks-list',
   mounted () {
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {

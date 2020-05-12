@@ -1,24 +1,24 @@
 <template>
   <div id="app" class="app-container">
     <div class="app-container__elements">
-      <main-header></main-header>
+      <app-header></app-header>
       <div class="app-container__elements__body">
-        <groups-list class="app-container__elements__body__groups-list" @open-modal="openAddGroupModal = true"></groups-list>
-        <tasks-list class="app-container__elements__body__tasks-list"></tasks-list>
+        <app-groups-list class="app-container__elements__body__groups-list" @open-modal="openAddGroupModal = true"></app-groups-list>
+        <app-tasks-list class="app-container__elements__body__tasks-list"></app-tasks-list>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MainHeader from '@/components/MainHeader.vue'
-import GroupsList from '@/components/GroupsList.vue'
-import TasksList from '@/components/TasksList.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import AppGroupsList from '@/components/AppGroupsList.vue'
+import AppTasksList from '@/components/AppTasksList.vue'
 
 export default {
   name: 'App',
   components: {
-    MainHeader, TasksList, GroupsList
+    AppHeader, AppTasksList, AppGroupsList
   }
 }
 </script>

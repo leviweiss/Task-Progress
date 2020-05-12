@@ -1,12 +1,12 @@
 <template>
-  <div id="main-header" class="header-container">
+  <div id="app-header" class="header-container">
     <h1>Tasks Progress</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'main-header'
+  name: 'app-header'
 }
 </script>
 

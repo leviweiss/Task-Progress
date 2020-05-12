@@ -26,7 +26,7 @@ import AddGroupModal from '@/components/AddGroupModal'
 import { bus } from '../main'
 
 export default {
-  name: 'groups-list',
+  name: 'app-groups-list',
   components: {
     AddGroupModal
   },
