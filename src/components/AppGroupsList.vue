@@ -73,6 +73,7 @@ export default {
     color: $mild-orange;
     margin-bottom: 5px;
     overflow-wrap: break-word;
+    border-radius: 4px;
   }
 
   &__item {
@@ -84,6 +85,7 @@ export default {
     background: $light-gray;
     cursor: pointer;
     overflow-wrap: break-word;
+    border-radius: 4px;
 
     &:hover {
       font-weight: bold;

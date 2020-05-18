@@ -146,6 +146,7 @@ export default {
         padding: 5px;
         background: $light-gray;
         width: 200px;
+        border-radius: 4px;
       }
 
       &__bullets {
@@ -158,6 +159,7 @@ export default {
           width: 33px;
           margin-right: 10px;
           border: 4px solid;
+          border-radius: 4px;
 
           &__full {
             background: $orange-linear-gradient;
@@ -178,6 +180,7 @@ export default {
         background: $light-gray;
         width: 50px;
         margin-right: 60px;
+        border-radius: 4px;
       }
 
       &__trash {
@@ -200,11 +203,15 @@ export default {
       &__text {
         font-size: 24px;
         margin-right: 20px;
+        background-color: $light-gray;
+        border-radius: 4px;
       }
 
       &__select-value {
         font-size: 24px;
         margin-right: 20px;
+        border-radius: 4px;
+        background-color: $light-gray;
       }
 
       &__check {
@@ -222,6 +229,7 @@ export default {
   background: $light-gray;
   margin-right: 10px;
   cursor: pointer;
+  border-radius: 4px;
   &:hover {
     box-shadow: 0 0 8px green;
   }
@@ -233,6 +241,7 @@ export default {
   height: 30px;
   background: $light-gray;
   cursor: pointer;
+  border-radius: 4px;
   &:hover {
     box-shadow: 0 0 8px red;
   }
@@ -255,6 +264,7 @@ export default {
   width: 40px;
   height: 30px;
   background: $light-gray;
+  border-radius: 4px;
   cursor: pointer;
   &:hover {
     box-shadow: 0 0 8px $strong-orange;

@@ -16,5 +16,6 @@ export default {
   font-size: 16px;
   background: $orange-linear-gradient;
   font-family: "Comic Sans MS";
+  border-radius: 4px;
 }
 </style>

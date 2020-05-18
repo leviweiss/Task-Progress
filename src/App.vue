@@ -33,13 +33,13 @@ export default {
       padding-top: 10px;
 
       &__groups-list {
-        min-width: 100px;
-        max-width: 200px;
-        flex: 12%;
+        border: solid 3px;
+        flex: 1 1 150px;
       }
 
       &__tasks-list {
-        flex: 88%;
+        border: solid 3px;
+        flex: 5 1 1200px;
       }
     }
   }
