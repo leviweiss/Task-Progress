@@ -34,12 +34,12 @@ export default {
 
       &__groups-list {
         border: solid 3px;
-        flex: 1 1 150px;
+        flex: 15%;
       }
 
       &__tasks-list {
         border: solid 3px;
-        flex: 5 1 1200px;
+        flex: 85%;
       }
     }
   }

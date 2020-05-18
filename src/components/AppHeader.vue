@@ -13,9 +13,9 @@ export default {
 <style scoped lang="scss">
 .header-container {
   text-align: center;
-  font-size: 16px;
+  font-size: $small-medium-font;
   background: $orange-linear-gradient;
   font-family: "Comic Sans MS";
-  border-radius: 4px;
+  border-radius: $small-border-radius;
 }
 </style>

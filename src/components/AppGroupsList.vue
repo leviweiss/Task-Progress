@@ -65,7 +65,7 @@ export default {
   @include flex-column;
 
   &__header {
-    font-size: 34px;
+    font-size: $large-font;
     font-weight: bold;
     text-align: center;
     padding: 5px;
@@ -73,19 +73,19 @@ export default {
     color: $mild-orange;
     margin-bottom: 5px;
     overflow-wrap: break-word;
-    border-radius: 4px;
+    border-radius: $small-border-radius;
   }
 
   &__item {
     position: relative;
-    font-size: 24px;
+    font-size: $medium-large-font;
     margin-bottom: 5px;
     text-align: center;
     padding: 5px;
     background: $light-gray;
     cursor: pointer;
     overflow-wrap: break-word;
-    border-radius: 4px;
+    border-radius: $small-border-radius;
 
     &:hover {
       font-weight: bold;

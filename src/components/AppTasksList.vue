@@ -6,19 +6,17 @@
           {{ task.name }}
         </div>
         <div class="tasks-list-container__tasks__task__bullets" @mouseleave="deactivateHovering(task.id)">
-          <div v-for="index in NUMBER_OF_BULLETS" :key="index">
-            <div class="tasks-list-container__tasks__task__bullets__square"
-            :class="{'tasks-list-container__tasks__task__bullets__square__full': squareNeedToBeFull({ taskId: task.id, index, taskValue: task.value })}"
-            @mouseover="activateHovering({ taskId: task.id, index })"
-            @click="bulletClick({ taskId: task.id, index })">
-            </div>
+          <div v-for="index in NUMBER_OF_BULLETS" :key="index" class="tasks-list-container__tasks__task__bullets__square"
+          @mouseover="activateHovering({ taskId: task.id, index })"
+          @click="bulletClick({ taskId: task.id, index })">
+            <div :class="{'tasks-list-container__tasks__task__bullets__square--full': squareNeedToBeFull({ taskId: task.id, index, taskValue: task.value })}"/>
           </div>
         </div>
         <div class="tasks-list-container__tasks__task__arrows">
           <div class="tasks-list-container__tasks__task__arrows__up" @click="increaseScore(task.id)">
             <i class="fas fa-arrow-up"></i>
           </div>
-          <div class="tasks-list-container__tasks__task__arrows__up" @click="decreaseScore(task.id)">
+          <div class="tasks-list-container__tasks__task__arrows__down" @click="decreaseScore(task.id)">
             <i class="fas fa-arrow-down"></i>
           </div>
         </div>
@@ -131,37 +129,44 @@ export default {
 <style scoped lang="scss">
 .tasks-list-container {
   @include flex-column;
+  align-items: center;
 
   &__tasks {
+    width: 100%;
+    height: 100%;
+
     &__task {
       @include flex-row;
-      margin-bottom: 10px;
+      margin-bottom: 1%;
       justify-content: center;
 
       &__name {
-        font-size: 24px;
-        margin-left: 10px;
-        margin-right: 30px;
+        font-size: $medium-font;
+        margin-left: 1%;
+        margin-right: 3%;
         text-align: center;
-        padding: 5px;
+        padding: 0.5%;
         background: $light-gray;
-        width: 200px;
-        border-radius: 4px;
+        width: 15%;
+        border-radius: $small-border-radius;
       }
 
       &__bullets {
         @include flex-row;
         align-items: center;
-        margin-right: 20px;
+        margin-right: 3%;
+        border: solid 3px;
+        flex-basis: 30%;
 
         &__square {
-          height: 20px;
-          width: 33px;
-          margin-right: 10px;
+          width: 10%;
+          height: 50%;
+          margin-right: 1%;
           border: 4px solid;
-          border-radius: 4px;
+          border-radius: $small-border-radius;
 
-          &__full {
+          &--full {
+            height: 100%;
             background: $orange-linear-gradient;
           }
         }
@@ -170,23 +175,59 @@ export default {
       &__arrows {
         @include flex-row;
         align-items: center;
-        margin-right: 30px;
+        margin-right: 1%;
+        width: 10%;
+
+        &__up {
+            margin-right: 0.5%;
+            width: 100%;
+            height: 100%;
+
+          .fa-arrow-up {
+            width: 50%;
+            height: 100%;
+            color: green;
+            background: $light-gray;
+            cursor: pointer;
+            border-radius: $small-border-radius;
+            &:hover {
+              box-shadow: 0 0 8px green;
+            }
+          }
+        }
+
+        &__down {
+            margin-right: 0.5%;
+            width: 100%;
+            height: 100%;
+
+          .fa-arrow-down {
+            width: 50%;
+            height: 100%;
+            color: red;
+            background: $light-gray;
+            cursor: pointer;
+            border-radius: $small-border-radius;
+            &:hover {
+              box-shadow: 0 0 8px red;
+            }
+          }
+        }
       }
 
       &__value {
-        font-size: 24px;
+        font-size: $medium-font;
         text-align: center;
-        padding: 5px;
+        padding: 0.3%;
         background: $light-gray;
-        width: 50px;
-        margin-right: 60px;
-        border-radius: 4px;
+        flex-basis: 5%;
+        margin-right: 6%;
+        border-radius: $small-border-radius;
       }
 
       &__trash {
         text-align: center;
         cursor: pointer;
-        height: 36px;
         opacity: 0.3;
         &:hover {
           opacity: 1;
@@ -196,54 +237,34 @@ export default {
   }
 
   &__add-task {
-    align-self: center;
-    margin-bottom: 20px;
+    margin-bottom: 1%;
+    @include flex-row;
 
     &__input {
+      border: solid 3px;
+
       &__text {
-        font-size: 24px;
-        margin-right: 20px;
+        flex: 1;
+        font-size: $medium-font;
+        margin-right: 2%;
         background-color: $light-gray;
-        border-radius: 4px;
+        border-radius: $small-border-radius;
       }
 
       &__select-value {
-        font-size: 24px;
-        margin-right: 20px;
-        border-radius: 4px;
+        flex: 1;
+        font-size: $medium-font;
+        margin-right: 2%;
+        border-radius: $small-border-radius;
         background-color: $light-gray;
       }
 
       &__check {
+        flex: 10;
         display: inline-block;
         vertical-align: bottom;
       }
     }
-  }
-}
-
-.fa-arrow-up {
-  color: green;
-  width: 36px;
-  height: 30px;
-  background: $light-gray;
-  margin-right: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  &:hover {
-    box-shadow: 0 0 8px green;
-  }
-}
-
-.fa-arrow-down {
-  color: red;
-  width: 36px;
-  height: 30px;
-  background: $light-gray;
-  cursor: pointer;
-  border-radius: 4px;
-  &:hover {
-    box-shadow: 0 0 8px red;
   }
 }
 
@@ -264,7 +285,7 @@ export default {
   width: 40px;
   height: 30px;
   background: $light-gray;
-  border-radius: 4px;
+  border-radius: $small-border-radius;
   cursor: pointer;
   &:hover {
     box-shadow: 0 0 8px $strong-orange;
