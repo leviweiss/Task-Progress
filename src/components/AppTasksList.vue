@@ -138,30 +138,31 @@ export default {
     &__task {
       @include flex-row;
       margin-bottom: 1%;
-      justify-content: center;
+      justify-content: space-around;
+      border: solid 3px;
+      align-items: center;
 
       &__name {
         font-size: $medium-font;
-        margin-left: 1%;
-        margin-right: 3%;
         text-align: center;
         padding: 0.5%;
         background: $light-gray;
         width: 15%;
         border-radius: $small-border-radius;
+        border: solid 3px;
       }
 
       &__bullets {
         @include flex-row;
-        align-items: center;
-        margin-right: 3%;
+        justify-content: space-around;
         border: solid 3px;
-        flex-basis: 30%;
+        width: 40%;
+        padding: 3px 0;
+        align-items: center;
 
         &__square {
-          width: 10%;
-          height: 50%;
-          margin-right: 1%;
+          width: 7%;
+          height: 20px;
           border: 4px solid;
           border-radius: $small-border-radius;
 
@@ -174,18 +175,19 @@ export default {
 
       &__arrows {
         @include flex-row;
-        align-items: center;
-        margin-right: 1%;
+        justify-content: space-around;
         width: 10%;
+        border: solid 3px;
+        align-items: center;
+        height: 100%;
 
         &__up {
-            margin-right: 0.5%;
-            width: 100%;
-            height: 100%;
+          width: 30%;
+          height: 100%;
 
           .fa-arrow-up {
-            width: 50%;
-            height: 100%;
+            width: 100%;
+            height: 30px;
             color: green;
             background: $light-gray;
             cursor: pointer;
@@ -197,13 +199,11 @@ export default {
         }
 
         &__down {
-            margin-right: 0.5%;
-            width: 100%;
-            height: 100%;
+          width: 30%;
 
           .fa-arrow-down {
-            width: 50%;
-            height: 100%;
+            width: 100%;
+            height: 30px;
             color: red;
             background: $light-gray;
             cursor: pointer;
@@ -220,28 +220,54 @@ export default {
         text-align: center;
         padding: 0.3%;
         background: $light-gray;
-        flex-basis: 5%;
-        margin-right: 6%;
+        width: 5%;
         border-radius: $small-border-radius;
+        border: solid 3px;
       }
 
       &__trash {
+        border: solid 3px;
         text-align: center;
         cursor: pointer;
         opacity: 0.3;
+        width: 2.5%;
         &:hover {
           opacity: 1;
+        }
+
+        .fa-trash-alt {
+          width: 100%;
+          height: 30px;
+          color: red;
         }
       }
     }
   }
 
   &__add-task {
-    margin-bottom: 1%;
     @include flex-row;
+    align-self: center;
+    width: 100%;
+    justify-content: center;
+
+    &__icon {
+      width: 3%;
+
+      .fa-plus-circle {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+        background: $light-gray;
+        border-radius: 50%;
+        &:hover {
+          box-shadow: 0 0 10px $basic-orange;
+        }
+      }
+    }
 
     &__input {
       border: solid 3px;
+      width: 100%;
 
       &__text {
         flex: 1;
@@ -261,41 +287,22 @@ export default {
 
       &__check {
         flex: 10;
-        display: inline-block;
-        vertical-align: bottom;
+        width: 100%;
+        height: 100%;
+
+        .fa-check {
+          color: $strong-orange;
+          width: 10%;
+          height: auto;
+          background: $light-gray;
+          border-radius: $small-border-radius;
+          cursor: pointer;
+          &:hover {
+            box-shadow: 0 0 8px $strong-orange;
+          }
+        }
       }
     }
   }
-}
-
-.fa-plus-circle {
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  padding: 2px;
-  background: $light-gray;
-  border-radius: 50%;
-  &:hover {
-    box-shadow: 0 0 10px $basic-orange;
-  }
-}
-
-.fa-check {
-  color: $strong-orange;
-  width: 40px;
-  height: 30px;
-  background: $light-gray;
-  border-radius: $small-border-radius;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0 8px $strong-orange;
-  }
-}
-
-.fa-trash-alt {
-  width: 36px;
-  height: 30px;
-  vertical-align: -18px;
-  color: rgb(255, 0, 0);
 }
 </style>
