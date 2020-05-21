@@ -43,9 +43,13 @@ export default {
       }
     }
   }
+}
 
-  &__add-group-modal {
-    position: absolute;
+@media only screen and (max-width: $tablet) {
+  .app-container {
+    &__elements__body__groups-list {
+      display: none !important
+    }
   }
 }
 </style>
