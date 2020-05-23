@@ -1,5 +1,5 @@
 <template>
-  <div id="groups-list" class="groups-list-container">
+  <div id="app-groups-list" class="groups-list-container">
     <div class="groups-list-container__header">Groups</div>
     <div v-for="group in groupsInfo" :key="group.id">
       <div class="groups-list-container__item"
@@ -34,7 +34,8 @@ export default {
     ...mapState({
       groupsInfo: state => state.groupsInfo,
       chosenGroupId: state => state.chosenGroupId,
-      openGroupModal: state => state.openGroupModal
+      openGroupModal: state => state.openGroupModal,
+      toShowGroupsNavigation: state => state.toShowGroupsNavigation
     }),
     ...mapGetters([
 

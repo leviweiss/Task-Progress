@@ -63,6 +63,84 @@ export default new Vuex.Store({
             value: 5
           }
         ]
+      },
+      {
+        id: 3,
+        name: 'Workout',
+        tasks: [
+          {
+            id: 1,
+            name: 'Abs',
+            value: 4
+          },
+          {
+            id: 2,
+            name: 'Running',
+            value: 5
+          },
+          {
+            id: 3,
+            name: 'Tennis',
+            value: 7
+          },
+          {
+            id: 4,
+            name: 'Gym',
+            value: 5
+          }
+        ]
+      },
+      {
+        id: 4,
+        name: 'Workout',
+        tasks: [
+          {
+            id: 1,
+            name: 'Abs',
+            value: 4
+          },
+          {
+            id: 2,
+            name: 'Running',
+            value: 5
+          },
+          {
+            id: 3,
+            name: 'Tennis',
+            value: 7
+          },
+          {
+            id: 4,
+            name: 'Gym',
+            value: 5
+          }
+        ]
+      },
+      {
+        id: 5,
+        name: 'Workout',
+        tasks: [
+          {
+            id: 1,
+            name: 'Abs',
+            value: 4
+          },
+          {
+            id: 2,
+            name: 'Running',
+            value: 5
+          },
+          {
+            id: 3,
+            name: 'Tennis',
+            value: 7
+          },
+          {
+            id: 4,
+            name: 'Gym',
+            value: 5
+          }
+        ]
       }
     ],
     chosenGroupId: 1,
@@ -71,7 +149,8 @@ export default new Vuex.Store({
     lastGroupId: 3,
     openGroupModal: false,
     addingNewTaskMode: false,
-    DEFAULT_TASK_VALUE: 5
+    DEFAULT_TASK_VALUE: 5,
+    toShowGroupsNavigation: false
   },
   mutations: {
     SET_CHOSEN_GROUP_ID (state, groupId) {
@@ -165,6 +244,9 @@ export default new Vuex.Store({
       var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
       const index = chosenGroupInfo.tasks.findIndex(t => t.id === taskId)
       chosenGroupInfo.tasks.splice(index, 1)
+    },
+    SHOW_GROUPS_NAVIGATION (state) {
+      state.toShowGroupsNavigation = true
     }
   },
   getters: {
@@ -222,6 +304,9 @@ export default new Vuex.Store({
     },
     removeTask ({ commit }, taskId) {
       commit('REMOVE_TASK', taskId)
+    },
+    showGroupsNavigation ({ commit }) {
+      commit('SHOW_GROUPS_NAVIGATION')
     }
   }
 })

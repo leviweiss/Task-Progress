@@ -1,7 +1,8 @@
 <template>
   <div id="app" class="app-container">
     <div class="app-container__elements">
-      <app-header></app-header>
+      <app-header class="app-container__elements__header"/>
+      <app-groups-navigation v-show="toShowGroupsNavigation" class="app-container__elements__app-groups-navigation"/>
       <div class="app-container__elements__body">
         <app-groups-list class="app-container__elements__body__groups-list" @open-modal="openAddGroupModal = true"></app-groups-list>
         <app-tasks-list class="app-container__elements__body__tasks-list"></app-tasks-list>
@@ -11,14 +12,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppHeader from '@/components/AppHeader.vue'
 import AppGroupsList from '@/components/AppGroupsList.vue'
 import AppTasksList from '@/components/AppTasksList.vue'
+import appGroupsNavigation from '@/components/appGroupsNavigation.vue'
 
 export default {
   name: 'App',
   components: {
-    AppHeader, AppTasksList, AppGroupsList
+    AppHeader, AppTasksList, AppGroupsList, appGroupsNavigation
+  },
+  computed: {
+    ...mapState({
+      toShowGroupsNavigation: state => state.toShowGroupsNavigation
+    })
   }
 }
 </script>
@@ -28,9 +36,16 @@ export default {
   &__elements {
     @include flex-column;
 
+    &__header {
+      margin-bottom: 1%;
+    }
+
+    &__app-groups-navigation {
+      margin-bottom: 1%;
+    }
+
     &__body {
       @include flex-row;
-      padding-top: 10px;
 
       &__groups-list {
         border: solid 3px;

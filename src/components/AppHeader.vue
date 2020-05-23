@@ -1,6 +1,6 @@
 <template>
   <div id="app-header" class="header-container">
-    <div class="header-container__navigation-bar">
+    <div class="header-container__navigation-bar" @click="showGroupsNavigation">
       <div class="header-container__navigation-bar__icon">
         <i class="fa fa-bars"></i>
       </div>
@@ -16,8 +16,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'app-header'
+  name: 'app-header',
+  methods: {
+    ...mapActions([
+      'showGroupsNavigation'
+    ])
+  }
 }
 </script>
 
@@ -69,6 +76,14 @@ export default {
     &__navigation-bar {
       display: none;
     }
+
+    &__header-name {
+      text-align: left;
+    }
+
+    &__user-info {
+      text-align: right;
+    }
   }
 }
 
@@ -76,17 +91,14 @@ export default {
   .header-container {
     &__navigation-bar {
       font-size: $small-font;
-      color: green;
     }
 
     &__header-name {
       font-size: $medium-large-font;
-      color: green;
     }
 
     &__user-info {
       font-size: $small-font;
-      color: green;
     }
   }
 }
@@ -95,17 +107,14 @@ export default {
   .header-container {
     &__navigation-bar {
       font-size: $extra-small-font;
-      color: red;
     }
 
     &__header-name {
       font-size: $small-medium-font;
-      color: red;
     }
 
     &__user-info {
       font-size: $extra-small-font;
-      color: red;
     }
   }
 }
