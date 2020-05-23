@@ -146,7 +146,7 @@ export default {
         font-size: $medium-font;
         text-align: center;
         padding: 0.5%;
-        background: $light-gray;
+        background: $light-grey;
         width: 15%;
         border-radius: $small-border-radius;
         border: solid 3px;
@@ -189,7 +189,7 @@ export default {
             width: 100%;
             height: 30px;
             color: green;
-            background: $light-gray;
+            background: $light-grey;
             cursor: pointer;
             border-radius: $small-border-radius;
             &:hover {
@@ -205,7 +205,7 @@ export default {
             width: 100%;
             height: 30px;
             color: red;
-            background: $light-gray;
+            background: $light-grey;
             cursor: pointer;
             border-radius: $small-border-radius;
             &:hover {
@@ -219,7 +219,7 @@ export default {
         font-size: $medium-font;
         text-align: center;
         padding: 0.3%;
-        background: $light-gray;
+        background: $light-grey;
         width: 5%;
         border-radius: $small-border-radius;
         border: solid 3px;
@@ -257,7 +257,7 @@ export default {
         width: 100%;
         height: auto;
         cursor: pointer;
-        background: $light-gray;
+        background: $light-grey;
         border-radius: 50%;
         &:hover {
           box-shadow: 0 0 10px $basic-orange;
@@ -273,7 +273,7 @@ export default {
         flex: 1;
         font-size: $medium-font;
         margin-right: 2%;
-        background-color: $light-gray;
+        background-color: $light-grey;
         border-radius: $small-border-radius;
       }
 
@@ -282,7 +282,7 @@ export default {
         font-size: $medium-font;
         margin-right: 2%;
         border-radius: $small-border-radius;
-        background-color: $light-gray;
+        background-color: $light-grey;
       }
 
       &__check {
@@ -294,7 +294,7 @@ export default {
           color: $strong-orange;
           width: 10%;
           height: auto;
-          background: $light-gray;
+          background: $light-grey;
           border-radius: $small-border-radius;
           cursor: pointer;
           &:hover {

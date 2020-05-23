@@ -100,7 +100,7 @@ export default {
   height: 180px;
   margin: 0px auto;
   padding: 20px 30px;
-  background-color: $light-gray;
+  background-color: $light-grey;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.795);
   transition: all 0.3s ease;
@@ -164,11 +164,11 @@ export default {
     &__button {
       font-size: 22px;
       font-weight: bold;
-      background-color: $light-gray;
+      background-color: $light-grey;
 
       &:disabled {
         font-weight: normal;
-        background-color: $light-gray;
+        background-color: $light-grey;
       }
     }
   }

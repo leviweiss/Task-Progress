@@ -67,4 +67,12 @@ export default {
     }
   }
 }
+
+@media not all and (max-width: $tablet) {
+  .app-container {
+    &__elements__app-groups-navigation {
+      display: none !important
+    }
+  }
+}
 </style>

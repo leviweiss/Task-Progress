@@ -45,6 +45,11 @@ export default {
     align-items: center;
     margin-right: 2%;
     margin-left: 2%;
+    cursor: pointer;
+    transition: color 0.5s;
+    &:hover {
+      color: $medium-grey;
+    }
 
     &__icon {
       margin-right: 3%;

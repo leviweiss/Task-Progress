@@ -247,6 +247,9 @@ export default new Vuex.Store({
     },
     SHOW_GROUPS_NAVIGATION (state) {
       state.toShowGroupsNavigation = true
+    },
+    CLOSE_GROUPS_NAVIGATION (state) {
+      state.toShowGroupsNavigation = false
     }
   },
   getters: {
@@ -307,6 +310,9 @@ export default new Vuex.Store({
     },
     showGroupsNavigation ({ commit }) {
       commit('SHOW_GROUPS_NAVIGATION')
+    },
+    closeGroupsNavigation ({ commit }) {
+      commit('CLOSE_GROUPS_NAVIGATION')
     }
   }
 })
