@@ -72,36 +72,40 @@ export default {
   }
 }
 
-@media only screen and (max-width: $tablet) and (min-width: $mobile) {
+@media only screen and (max-width: $tablet) {
   .header-container {
+    &__navigation-bar {
+      font-size: $small-font;
+      color: green;
+    }
+
     &__header-name {
-      text-align: left;
       font-size: $medium-large-font;
       color: green;
-      flex: 80%;
     }
 
     &__user-info {
       font-size: $small-font;
       color: green;
-      flex: 20%;
     }
   }
 }
 
 @media only screen and (max-width: $mobile) {
   .header-container {
-    &__header-name {
-      text-align: left;
-      font-size: $medium-font;
+    &__navigation-bar {
+      font-size: $extra-small-font;
       color: red;
-      flex: 80%;
+    }
+
+    &__header-name {
+      font-size: $small-medium-font;
+      color: red;
     }
 
     &__user-info {
       font-size: $extra-small-font;
       color: red;
-      flex: 20%;
     }
   }
 }
