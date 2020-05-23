@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import AddGroupModal from '@/components/AddGroupModal'
-import { bus } from '../main'
+import { emitGroupChange, emitGroupRemove } from '../utils/bus'
 
 export default {
   name: 'app-groups-list',
@@ -36,10 +36,7 @@ export default {
       chosenGroupId: state => state.chosenGroupId,
       openGroupModal: state => state.openGroupModal,
       toShowGroupsNavigation: state => state.toShowGroupsNavigation
-    }),
-    ...mapGetters([
-
-    ])
+    })
   },
   methods: {
     ...mapActions([
@@ -51,10 +48,10 @@ export default {
       'removeGroup'
     ]),
     emitGroupChange () {
-      bus.$emit('groupChange')
+      emitGroupChange()
     },
     emitGroupRemove () {
-      bus.$emit('groupRemove')
+      emitGroupRemove()
     }
   }
 }

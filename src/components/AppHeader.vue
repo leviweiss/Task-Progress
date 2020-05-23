@@ -32,7 +32,7 @@ export default {
 .header-container {
   background: $orange-linear-gradient;
   border-radius: $small-border-radius;
-  font-family: "Comic Sans MS";
+  font-family: $comic-font-family;
   @include flex-row;
   justify-content: space-between;
   align-items: center;
