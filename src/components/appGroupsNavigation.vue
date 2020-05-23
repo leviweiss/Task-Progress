@@ -8,6 +8,9 @@
       :class="{'groups-navigation-container__groups-list__group--active': group.id === chosenGroupId}"
       @click.prevent="chooseGroup(group.id); emitGroupChange()">
         {{ group.name }}
+        <div v-show="true" class="groups-navigation-container__groups-list__group__remove-icon" @click.stop="removeGroup(group.id); emitGroupRemove()">
+          <i class="fas fa-minus-circle"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -73,22 +76,41 @@ export default {
     margin: 1%;
 
     &__group {
+      position: relative;
       flex-basis: 28%;
       font-size: $small-medium-font;
       text-align: center;
       font-weight: bold;
       cursor: pointer;
       transition: color 0.5s, border-color 0.5s;
-      border-radius: 25px;
+      border-radius: $small-border-radius;
       border: 2.5px solid;
       padding: 0.5%;
       margin: 1%;
       &:hover {
-        border-color: $strong-orange;;
+        border-color: $strong-orange;
         color: $strong-orange;
       }
       &--active {
         background: $orange-linear-gradient;
+      }
+
+      &__remove-icon {
+        width: 7%;
+        position: absolute;
+        top: -50%;
+        right: -4%;
+
+        .fa-minus-circle {
+          background: gray;
+          width: 100%;
+          height: auto;
+          border-radius: 50%;
+          color: red;
+          // &:hover {
+          //   box-shadow: 0 0 10px red;
+          // }
+        }
       }
     }
   }
@@ -98,7 +120,14 @@ export default {
   .groups-navigation-container {
     &__groups-list__group {
       font-size: $extra-small-font;
+
+      &__remove-icon {
+        width: 7.5%;
+        top: -55%;
+        right: -5%;
+      }
     }
+
   }
 }
 </style>
