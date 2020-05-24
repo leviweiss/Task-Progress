@@ -48,12 +48,10 @@ export default {
       @include flex-row;
 
       &__groups-list {
-        border: solid 3px;
         flex: 15%;
       }
 
       &__tasks-list {
-        border: solid 3px;
         flex: 85%;
       }
     }

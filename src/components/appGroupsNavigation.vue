@@ -14,26 +14,38 @@
         </div>
       </div>
     </div>
+    <div class="groups-navigation-container__add-group" @click="openAddGroupModal">
+      <div class="fas fa-plus-circle"></div>
+      <AddGroupModal v-show="openGroupModal" @close="closeAddGroupModal" @add="addGroup"/>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import { emitGroupChange, emitGroupRemove } from '@/utils/bus'
+import AddGroupModal from '@/components/AddGroupModal'
 
 export default {
   name: 'app-groups-navigation',
+  components: {
+    AddGroupModal
+  },
   computed: {
     ...mapState({
       groupsInfo: state => state.groupsInfo,
-      chosenGroupId: state => state.chosenGroupId
+      chosenGroupId: state => state.chosenGroupId,
+      openGroupModal: state => state.openGroupModal
     })
   },
   methods: {
     ...mapActions([
       'closeGroupsNavigation',
       'chooseGroup',
-      'removeGroup'
+      'removeGroup',
+      'openAddGroupModal',
+      'closeAddGroupModal',
+      'addGroup'
     ]),
     emitGroupChange () {
       emitGroupChange()
@@ -63,13 +75,15 @@ export default {
   border: solid 3px;
 
   &__close {
-    margin: 1%;
-    width: 5%;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+    width: 4%;
     text-align: center;
 
     .fa-times {
       width: 100%;
-      height: 30px;
+      height: auto;
       cursor: pointer;
       transition: color 1s, transform 1s;
       &:hover {
@@ -85,7 +99,6 @@ export default {
     justify-content: space-around;
     border-radius: $small-border-radius;
     font-family: $comic-font-family;
-    margin: 1%;
 
     &__group {
       position: relative;
@@ -114,7 +127,7 @@ export default {
         right: -4%;
 
         .fa-minus-circle {
-          background: gray;
+          background: $light-medium-grey;
           width: 100%;
           height: auto;
           border-radius: 50%;
@@ -123,6 +136,23 @@ export default {
             box-shadow: 0 0 10px red;
           }
         }
+      }
+    }
+  }
+
+  &__add-group {
+    width: 4.5%;
+    align-self: center;
+    margin: 0.3%;
+
+    .fa-plus-circle {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 50%;
+      &:hover {
+        box-shadow: 0 0 10px 3px $strong-orange;
+        color: $strong-orange;
       }
     }
   }

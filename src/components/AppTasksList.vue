@@ -133,13 +133,12 @@ export default {
 
   &__tasks {
     width: 100%;
-    height: 100%;
+    height: auto;
 
     &__task {
       @include flex-row;
       margin-bottom: 1%;
       justify-content: space-around;
-      border: solid 3px;
       align-items: center;
 
       &__name {
@@ -149,13 +148,11 @@ export default {
         background: $light-grey;
         width: 15%;
         border-radius: $small-border-radius;
-        border: solid 3px;
       }
 
       &__bullets {
         @include flex-row;
         justify-content: space-around;
-        border: solid 3px;
         width: 40%;
         padding: 3px 0;
         align-items: center;
@@ -177,7 +174,6 @@ export default {
         @include flex-row;
         justify-content: space-around;
         width: 10%;
-        border: solid 3px;
         align-items: center;
         height: 100%;
 
@@ -222,11 +218,9 @@ export default {
         background: $light-grey;
         width: 5%;
         border-radius: $small-border-radius;
-        border: solid 3px;
       }
 
       &__trash {
-        border: solid 3px;
         text-align: center;
         cursor: pointer;
         opacity: 0.3;
@@ -251,7 +245,7 @@ export default {
     justify-content: center;
 
     &__icon {
-      width: 3%;
+      width: 4%;
 
       .fa-plus-circle {
         width: 100%;

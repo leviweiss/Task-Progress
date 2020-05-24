@@ -146,7 +146,7 @@ export default new Vuex.Store({
     chosenGroupId: 1,
     NUMBER_OF_BULLETS: 10,
     MINIMUM_VALUE: 1,
-    lastGroupId: 3,
+    lastGroupId: 5,
     openGroupModal: false,
     addingNewTaskMode: false,
     DEFAULT_TASK_VALUE: 5,
