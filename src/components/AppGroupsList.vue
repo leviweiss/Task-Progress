@@ -47,7 +47,7 @@ export default {
       'showGroupRemoveIcon',
       'removeGroup'
     ]),
-    emitGroupChange () {
+    aemitGroupChange () {
       emitGroupChange()
     },
     emitGroupRemove () {

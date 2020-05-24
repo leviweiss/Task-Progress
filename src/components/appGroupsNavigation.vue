@@ -8,7 +8,8 @@
       :class="{'groups-navigation-container__groups-list__group--active': group.id === chosenGroupId}"
       @click.prevent="chooseGroup(group.id); emitGroupChange()">
         {{ group.name }}
-        <div v-show="true" class="groups-navigation-container__groups-list__group__remove-icon" @click.stop="removeGroup(group.id); emitGroupRemove()">
+        <div v-show="true" class="groups-navigation-container__groups-list__group__remove-icon" @click.stop="removeGroup(group.id); emitGroupRemove()"
+        @mouseover="mouseOverRemoveIcon($event, group.id)" @mouseleave="mouseLeaveRemoveIcon($event, group.id)">
           <i class="fas fa-minus-circle"></i>
         </div>
       </div>
@@ -18,7 +19,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { emitGroupChange, emitGroupRemove } from '../utils/bus'
+import { emitGroupChange, emitGroupRemove } from '@/utils/bus'
 
 export default {
   name: 'app-groups-navigation',
@@ -31,13 +32,24 @@ export default {
   methods: {
     ...mapActions([
       'closeGroupsNavigation',
-      'chooseGroup'
+      'chooseGroup',
+      'removeGroup'
     ]),
     emitGroupChange () {
       emitGroupChange()
     },
     emitGroupRemove () {
       emitGroupRemove()
+    },
+    mouseOverRemoveIcon (event, groupId) {
+      var element = document.getElementsByClassName('groups-navigation-container__groups-list__group')[groupId - 1]
+      element.style.color = 'black'
+      element.style.borderColor = 'black'
+    },
+    mouseLeaveRemoveIcon (event, groupId) {
+      var element = document.getElementsByClassName('groups-navigation-container__groups-list__group')[groupId - 1]
+      element.style.color = ''
+      element.style.borderColor = ''
     }
   }
 }
@@ -107,9 +119,9 @@ export default {
           height: auto;
           border-radius: 50%;
           color: red;
-          // &:hover {
-          //   box-shadow: 0 0 10px red;
-          // }
+          &:hover {
+            box-shadow: 0 0 10px red;
+          }
         }
       }
     }
