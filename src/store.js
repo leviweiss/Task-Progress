@@ -157,7 +157,7 @@ export default new Vuex.Store({
       state.chosenGroupId = groupId
     },
     Add_GROUP (state, groupName) {
-      var group = {}
+      const group = {}
       group.id = state.lastGroupId + 1
       state.lastGroupId += 1
       group.name = groupName
@@ -165,43 +165,43 @@ export default new Vuex.Store({
       state.groupsInfo.push(group)
     },
     INCREASE_SCORE (state, taskId) {
-      var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
-      var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
-      var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+      const chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+      const chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+      const task = chosenGroupInfo.tasks.find(t => t.id === taskId)
       if (task.value < state.NUMBER_OF_BULLETS) {
         task.value += 1
         Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
       }
     },
     DECREASE_SCORE (state, taskId) {
-      var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
-      var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
-      var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+      const chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+      const chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+      const task = chosenGroupInfo.tasks.find(t => t.id === taskId)
       if (task.value > state.MINIMUM_VALUE) {
         task.value -= 1
         Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
       }
     },
     ACTIVATE_HOVERING (state, { taskId, index }) {
-      var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
-      var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
-      var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+      const chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+      const chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+      const task = chosenGroupInfo.tasks.find(t => t.id === taskId)
       task.hoveringStatus = true
       task.hoveringIndex = index
       Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
     },
     DEACTIVATE_HOVERING (state, taskId) {
-      var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
-      var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
-      var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+      const chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+      const chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+      const task = chosenGroupInfo.tasks.find(t => t.id === taskId)
       task.hoveringStatus = false
       task.hoveringIndex = undefined
       Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
     },
     BULLET_CLICK (state, { taskId, index }) {
-      var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
-      var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
-      var task = chosenGroupInfo.tasks.find(t => t.id === taskId)
+      const chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+      const chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+      const task = chosenGroupInfo.tasks.find(t => t.id === taskId)
       task.value = index
       Vue.set(state.groupsInfo, chosenGroupInfoIndex, chosenGroupInfo)
     },
@@ -226,22 +226,22 @@ export default new Vuex.Store({
       state.addingNewTaskMode = true
     },
     ADD_NEW_TASK (state, { name, value }) {
-      var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
-      var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+      const chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+      const chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
 
-      var id = 1
+      let id = 1
       if (!isNil(chosenGroupInfo.tasks) && chosenGroupInfo.tasks.length) {
         id = chosenGroupInfo.tasks[chosenGroupInfo.tasks.length - 1].id + 1
       }
-      var newTask = { id, name, value }
+      const newTask = { id, name, value }
       chosenGroupInfo.tasks.push(newTask)
     },
     DONE_ADDING_NEW_TASK (state) {
       state.addingNewTaskMode = false
     },
     REMOVE_TASK (state, taskId) {
-      var chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
-      var chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
+      const chosenGroupInfoIndex = state.groupsInfo.findIndex(g => g.id === state.chosenGroupId)
+      const chosenGroupInfo = state.groupsInfo[chosenGroupInfoIndex]
       const index = chosenGroupInfo.tasks.findIndex(t => t.id === taskId)
       chosenGroupInfo.tasks.splice(index, 1)
     },

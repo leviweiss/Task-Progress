@@ -100,7 +100,7 @@ export default {
       'removeTask'
     ]),
     squareNeedToBeFull ({ taskId, index, taskValue }) {
-      var task = this.tasks.find(t => t.id === taskId)
+      let task = this.tasks.find(t => t.id === taskId)
       if (task.hoveringStatus === true) {
         if (index <= task.hoveringIndex) {
           return true

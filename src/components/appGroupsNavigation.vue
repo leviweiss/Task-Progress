@@ -54,12 +54,12 @@ export default {
       emitGroupRemove()
     },
     mouseOverRemoveIcon (event, groupId) {
-      var element = document.getElementsByClassName('groups-navigation-container__groups-list__group')[groupId - 1]
+      const element = document.getElementsByClassName('groups-navigation-container__groups-list__group')[groupId - 1]
       element.style.color = 'black'
       element.style.borderColor = 'black'
     },
     mouseLeaveRemoveIcon (event, groupId) {
-      var element = document.getElementsByClassName('groups-navigation-container__groups-list__group')[groupId - 1]
+      const element = document.getElementsByClassName('groups-navigation-container__groups-list__group')[groupId - 1]
       element.style.color = ''
       element.style.borderColor = ''
     }
