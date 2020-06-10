@@ -66,79 +66,27 @@ export default new Vuex.Store({
       },
       {
         id: 3,
-        name: 'Workout',
+        name: 'Studies',
         tasks: [
           {
             id: 1,
-            name: 'Abs',
-            value: 4
+            name: 'Math',
+            value: 8
           },
           {
             id: 2,
-            name: 'Running',
-            value: 5
+            name: 'English',
+            value: 10
           },
           {
-            id: 3,
-            name: 'Tennis',
-            value: 7
-          },
-          {
-            id: 4,
-            name: 'Gym',
-            value: 5
-          }
-        ]
-      },
-      {
-        id: 4,
-        name: 'Workout',
-        tasks: [
-          {
-            id: 1,
-            name: 'Abs',
+            id: '3',
+            name: 'Literature',
             value: 4
           },
           {
-            id: 2,
-            name: 'Running',
-            value: 5
-          },
-          {
-            id: 3,
-            name: 'Tennis',
-            value: 7
-          },
-          {
             id: 4,
-            name: 'Gym',
-            value: 5
-          }
-        ]
-      },
-      {
-        id: 5,
-        name: 'Workout',
-        tasks: [
-          {
-            id: 1,
-            name: 'Abs',
-            value: 4
-          },
-          {
-            id: 2,
-            name: 'Running',
-            value: 5
-          },
-          {
-            id: 3,
-            name: 'Tennis',
-            value: 7
-          },
-          {
-            id: 4,
-            name: 'Gym',
-            value: 5
+            name: 'Physics',
+            value: 8
           }
         ]
       }
