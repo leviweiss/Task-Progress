@@ -20,6 +20,9 @@ import appGroupsNavigation from '@/components/appGroupsNavigation.vue'
 
 export default {
   name: 'App',
+  metaInfo: {
+    title: 'Tasks-Progress'
+  },
   components: {
     AppHeader, AppTasksList, AppGroupsList, appGroupsNavigation
   },
